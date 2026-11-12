@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Osondu Michael | Front-End Developer &amp; Product Designer</title>
+<meta name="description" content="Osondu Michael Charles: front-end developer and product designer in Lagos. React, Figma, Webflow. First Class Software Engineering, CEH certified. Open to roles.">
+<meta property="og:title" content="Osondu Michael | Front-End Developer & Product Designer">
+<meta property="og:description" content="I design products and build the front-end that ships them. Case studies: MPI Africa, Relay, AI grading system.">
+<meta property="og:image" content="assets/michael.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FF5B14'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='white'%3EOM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: bright orange hero with the name set huge behind the portrait, then soft grey cards and one orange "featured" card per row, like a coaching landing page reworked for a developer. */
+  --orange:#FF5B14; --orange-2:#FF8A3D; --ink:#111216; --muted:#62666F; --card:#F4F5F7; --line:#E6E7EB; --bg:#FFFFFF;
+  --font:"Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+h1,h2,h3{margin:0;text-wrap:balance;line-height:1.08;letter-spacing:-.02em}
+p{margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--orange);background:#FFEDE4;border-radius:999px;padding:5px 12px}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.pill{display:inline-flex;align-items:center;gap:10px;border-radius:999px;font-weight:600;font-size:14px;text-decoration:none;padding:6px 6px 6px 16px;white-space:nowrap}
+.pill .ico{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#fff;flex:none}
+.pill .ico svg{width:14px;height:14px}
+.pill.dark{background:var(--ink);color:#fff}
+.pill.white{background:#fff;color:var(--ink)}
+.pill.white .ico{background:linear-gradient(135deg,var(--orange-2),var(--orange))}
+.pill.orange{background:linear-gradient(135deg,var(--orange-2),var(--orange));color:#fff;box-shadow:0 8px 24px rgba(255,91,20,.35)}
+.pill.orange .ico{background:#fff;color:var(--orange)}
+
+/* NAV */
+nav.top{position:absolute;inset:0 0 auto 0;z-index:5}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+.brand{font-weight:800;font-size:18px;text-decoration:none;letter-spacing:-.01em}
+.brand span{color:var(--orange)}
+.links{display:flex;gap:28px;font-size:14px;font-weight:500}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover,.links a.on{color:var(--orange)}
+.links a.on{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#FFFFFF 0%,#FFF4EE 26%,#FFB27F 58%,#FF7A2E 82%,#FF5B14 100%);padding-top:76px}
+.hero-inner{position:relative;max-width:1200px;margin:0 auto;padding:0 24px;min-height:620px}
+.bigname{position:absolute;left:0;right:0;top:40px;text-align:center;font-weight:800;font-size:clamp(56px,11.6vw,170px);line-height:.9;letter-spacing:-.05em;white-space:nowrap;background:linear-gradient(180deg,rgba(255,91,20,.55),rgba(255,91,20,.12) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;pointer-events:none}
+.portrait{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(400px,62vw);z-index:2;filter:drop-shadow(0 20px 40px rgba(120,40,0,.25))}
+.hero-copy{position:absolute;left:24px;bottom:56px;z-index:3;max-width:430px}
+.hero-copy h1{color:#fff;font-size:clamp(38px,5vw,62px);font-weight:700;text-shadow:0 2px 24px rgba(160,50,0,.25)}
+.hero-side{position:absolute;right:24px;bottom:64px;z-index:3;max-width:300px;color:#fff}
+.hero-side .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);padding:6px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+.hero-side p{font-size:14px;opacity:.95}
+
+/* ABOUT */
+.about{padding:72px 0 40px}
+.about-grid{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
+.trust{display:grid;gap:16px}
+.stack{display:flex}
+.stack span{width:40px;height:40px;border-radius:50%;border:3px solid #fff;margin-left:-10px;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff}
+.stack span:first-child{margin-left:0}
+.trust small{color:var(--muted);font-size:13px}
+.trust b{font-size:30px;font-weight:800}
+.trust .tb{display:flex;align-items:baseline;gap:8px}
+.statement{font-size:clamp(22px,2.6vw,32px);font-weight:600;line-height:1.3;letter-spacing:-.01em}
+.statement em{font-style:normal;color:var(--orange)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr) 1.35fr;gap:16px;margin-top:40px}
+.stat{background:var(--card);border-radius:18px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;min-height:200px}
+.stat b{font-size:42px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;font-weight:500}
+.stat small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.photo-card{border-radius:18px;overflow:hidden;position:relative;min-height:200px;background:#0d1b2a}
+.photo-card img{width:100%;height:100%!important;object-fit:cover;object-position:left top}
+.photo-card .tag{position:absolute;left:14px;bottom:14px;background:#fff;border-radius:999px;font-size:12px;font-weight:600;padding:6px 12px}
+
+/* SERVICES */
+section.block{padding:72px 0}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:32px;flex-wrap:wrap}
+.head h2{font-size:clamp(30px,3.6vw,44px);font-weight:700;margin-top:14px;max-width:16ch}
+.arrows{display:flex;gap:10px}
+.arrows button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center}
+.arrows button.next{background:linear-gradient(135deg,var(--orange-2),var(--orange));border:0;color:#fff;box-shadow:0 6px 18px rgba(255,91,20,.35)}
+.arrows svg{width:16px;height:16px}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/4);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.rail::-webkit-scrollbar{display:none}
+.svc{scroll-snap-align:start;background:var(--card);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;min-height:440px}
+.svc .top{padding:20px 20px 18px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tags span{font-size:11px;font-weight:600;background:#fff;border-radius:999px;padding:5px 10px}
+.svc h3{font-size:24px;font-weight:600;margin-bottom:10px}
+.svc p{font-size:13px;color:var(--muted)}
+.svc.featured{background:linear-gradient(180deg,var(--orange-2),var(--orange));color:#fff}
+.svc.featured p{color:rgba(255,255,255,.9)}
+.svc.featured .tags span{background:rgba(255,255,255,.95);color:var(--ink)}
+.art{margin-top:auto;position:relative;height:210px;background:#1b1d23;overflow:hidden}
+.art .pill{position:absolute;left:14px;bottom:14px;background:rgba(17,18,22,.75);color:#fff;backdrop-filter:blur(6px);font-size:12px;padding:4px 4px 4px 12px}
+.art .pill .ico{width:26px;height:26px}
+/* little illustrations, drawn in CSS */
+.code{padding:18px;font:12px/1.7 ui-monospace,Menlo,monospace;color:#c9d1d9}
+.code i{font-style:normal;color:#ff9b5c}.code u{text-decoration:none;color:#7ee0b5}.code s{text-decoration:none;color:#8ab4ff}
+.frames{display:grid;grid-template-columns:1.2fr 1fr;gap:10px;padding:18px;height:100%}
+.frames div{background:#2a2d35;border-radius:10px;position:relative}
+.frames div::after{content:"";position:absolute;left:12px;right:30%;top:14px;height:8px;border-radius:4px;background:#FF8A3D}
+.frames div:nth-child(2)::after{background:#7ee0b5;right:45%}
+.frames div::before{content:"";position:absolute;left:12px;right:12px;bottom:14px;height:44%;border-radius:8px;background:#3a3e48}
+.shot{width:100%;height:100%!important;object-fit:cover;object-position:left top}
+.shield{display:grid;place-items:center;height:100%}
+.shield svg{width:96px;height:96px}
+
+/* WORK */
+.work{display:grid;gap:20px}
+.case{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--card);border-radius:24px;overflow:hidden}
+.case .txt{padding:32px}
+.case .meta{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 18px}
+.case .meta span{font-size:12px;font-weight:600;background:#fff;border-radius:999px;padding:5px 10px}
+.case h3{font-size:28px;font-weight:700}
+.case p{color:var(--muted);font-size:15px}
+.case ul{margin:14px 0 0;padding-left:18px;font-size:15px}
+.case li{margin-bottom:6px}
+.case .vis{background:#1b1d23;min-height:320px;position:relative}
+.case .vis img{width:100%;height:100%!important;object-fit:cover;object-position:left top}
+.results{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.results div{background:#fff;border-radius:14px;padding:12px 16px;flex:1;min-width:140px}
+.results b{display:block;font-size:24px;color:var(--orange)}
+.results span{font-size:13px;color:var(--muted)}
+.fine{font-size:12px!important;margin-top:10px}
+.case a.pill{margin-top:22px}
+/* relay diagram */
+.flow{padding:28px;display:grid;gap:10px;align-content:center;height:100%;color:#e8e9ec}
+.flow .box{background:#262930;border-radius:12px;padding:12px 14px;font-size:14px}
+.flow small{display:block;color:#9aa0aa;font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.flow .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.flow .grid span{font-size:12px;background:#30343c;border-radius:8px;padding:6px 8px}
+.flow .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flow .ok{border-left:4px solid #7ee0b5}.flow .warn{border-left:4px solid var(--orange)}
+.flow .arr{text-align:center;color:#9aa0aa;font-size:12px}
+.case.ai .vis{display:grid;place-items:center;background:linear-gradient(160deg,#FF8A3D,#FF5B14)}
+.award{background:#fff;border-radius:18px;padding:22px 24px;max-width:300px;text-align:center;box-shadow:0 20px 40px rgba(120,40,0,.25)}
+.award b{display:block;font-size:20px;margin:6px 0}
+.award span{color:var(--muted);font-size:13px}
+
+/* EXPERIENCE */
+.timeline{display:grid;gap:12px}
+.job{display:grid;grid-template-columns:200px 1fr auto;gap:24px;align-items:center;background:var(--card);border-radius:18px;padding:22px 24px}
+.job .when{font-size:13px;font-weight:600;color:var(--muted)}
+.job h3{font-size:19px;font-weight:700}
+.job p{font-size:14px;color:var(--muted);margin-top:4px}
+.job .type{font-size:12px;font-weight:600;background:#fff;border-radius:999px;padding:6px 12px;white-space:nowrap}
+.job.now{background:linear-gradient(135deg,var(--orange-2),var(--orange));color:#fff}
+.job.now p,.job.now .when{color:rgba(255,255,255,.9)}
+
+/* SKILLS */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sk{background:var(--card);border-radius:18px;padding:24px}
+.sk h3{font-size:18px;margin-bottom:14px}
+.sk div{display:flex;flex-wrap:wrap;gap:8px}
+.sk span{background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:500}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,#FF8A3D,#FF5B14);border-radius:28px;color:#fff;padding:56px 48px;display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center;position:relative;overflow:hidden}
+.cta::after{content:"OM";position:absolute;right:-20px;bottom:-60px;font-size:260px;font-weight:800;color:rgba(255,255,255,.12);letter-spacing:-.06em;pointer-events:none}
+.cta h2{font-size:clamp(32px,4vw,52px);font-weight:700}
+.cta p{margin-top:14px;opacity:.95;max-width:44ch}
+.contacts{display:grid;gap:10px;position:relative;z-index:1}
+.contacts a,.contacts div{display:flex;justify-content:space-between;gap:12px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:14px 16px;text-decoration:none;font-weight:600;font-size:14px;flex-wrap:wrap}
+.contacts small{opacity:.85;font-weight:500}
+footer{padding:40px 0;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:1000px){
+  .rail{grid-auto-columns:calc((100% - 16px)/2)}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .photo-card{grid-column:1 / -1;height:240px}
+  .case{grid-template-columns:1fr}
+  .case .vis{min-height:260px}
+  .job{grid-template-columns:1fr;gap:6px}
+  .job .type{justify-self:start}
+  .cta{grid-template-columns:1fr;padding:40px 28px}
+  .skills{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .links{display:none}
+  .hero-inner{min-height:640px}
+  .bigname{top:24px;font-size:23vw;line-height:.85}
+  .bigname span{display:block}
+  .portrait{width:min(330px,82vw);bottom:0}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(180deg,rgba(255,91,20,0),rgba(230,70,0,.85));z-index:2;pointer-events:none}
+  .hero-copy{left:24px;right:24px;bottom:28px;max-width:none}
+  .hero-copy h1{font-size:40px}
+  .hero-side{left:24px;right:24px;bottom:auto;top:auto;display:none}
+  .about-grid{grid-template-columns:1fr;gap:24px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stats .stat:nth-child(3){grid-column:1 / -1}
+  .rail{grid-auto-columns:86%}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#home">Osondu<span>.</span></a>
+    <div class="links">
+      <a class="on" href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+    </div>
+    <a class="pill orange" href="#contact">Contact <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M6 4h6v6"/></svg></span></a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-inner">
+    <div class="bigname" aria-hidden="true"><span>Osondu</span> <span>Michael</span></div>
+    <img class="portrait" src="assets/michael.webp" alt="Osondu Michael Charles smiling in his graduation gown" width="480" height="693">
+    <div class="hero-copy">
+      <h1>Design It. Build It. Ship It.</h1>
+    </div>
+    <div class="hero-side">
+      <div class="row">
+        <a class="pill white" href="#contact">Hire Me <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2"><path d="M4 12L12 4M6 4h6v6"/></svg></span></a>
+        <span class="badge">CEH certified</span>
+      </div>
+      <p>Front-end developer and product designer in Lagos. I take a business problem from Figma to a working React or Webflow front-end that customers trust.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="trust">
+        <span class="chip">About me</span>
+        <div class="stack" aria-hidden="true">
+          <span style="background:#61DAFB;color:#111">React</span>
+          <span style="background:#A259FF">Fig</span>
+          <span style="background:#146EF5">Wf</span>
+          <span style="background:#111">Fr</span>
+        </div>
+        <small>Trusted by over</small>
+        <div class="tb"><b>100+</b><small>clients on and off Upwork</small></div>
+      </div>
+      <p class="statement">I'm a <em>front-end developer and product designer</em> who turns business problems into products people actually use. I design in Figma, build in React and Webflow, and judge my work by what it changes for the business: more enquiries, less manual work, fewer drop-offs.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>100+</b><span>Clients served<small>On and off Upwork since 2022</small></span></div>
+      <div class="stat"><b>+30%</b><span>Inbound enquiries<small>After the MPI Africa website rebuild</small></span></div>
+      <div class="stat"><b>4.71</b><span>CGPA, First Class<small>B.Sc. Software Engineering, 2025</small></span></div>
+      <div class="photo-card"><img src="assets/mpi-africa.webp" alt="MPI Africa homepage, designed and built in Webflow" width="800" height="506" loading="lazy"><span class="tag">MPI Africa, live site</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="chip">Services</span><h2>What I bring to your team</h2></div>
+      <div class="arrows">
+        <button type="button" id="prev" aria-label="Previous services"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button type="button" id="next" class="next" aria-label="Next services"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></button>
+      </div>
+    </div>
+    <div class="rail" id="rail">
+      <article class="svc featured">
+        <div class="top"><div class="tags"><span>React</span><span>JavaScript</span></div>
+          <h3>Front-End Development</h3>
+          <p>Responsive, accessible interfaces in React, built from the design file and ready for production.</p></div>
+        <div class="art"><div class="code" aria-hidden="true"><i>export</i> <i>function</i> <s>Hero</s>() {<br>&nbsp;&nbsp;<i>return</i> (<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;<u>section</u> className=<u>"hero"</u>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<u>h1</u>&gt;Design. Build. Ship.&lt;/<u>h1</u>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<u>section</u>&gt;<br>&nbsp;&nbsp;);<br>}</div>
+          <a class="pill" href="#work">See work <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2"><path d="M4 12L12 4M6 4h6v6"/></svg></span></a></div>
+      </article>
+      <article class="svc">
+        <div class="top"><div class="tags"><span>Figma</span><span>UX research</span></div>
+          <h3>UI/UX &amp; Product Design</h3>
+          <p>Flows, wireframes and high-fidelity prototypes for web apps and dashboards.</p></div>
+        <div class="art"><div class="frames" aria-hidden="true"><div></div><div></div></div>
+          <a class="pill" href="#relay">See Relay <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2"><path d="M4 12L12 4M6 4h6v6"/></svg></span></a></div>
+      </article>
+      <article class="svc">
+        <div class="top"><div class="tags"><span>Webflow</span><span>Framer</span></div>
+          <h3>Websites That Convert</h3>
+          <p>Marketing sites structured to move visitors from curiosity to trust to an enquiry.</p></div>
+        <div class="art"><img class="shot" src="assets/mpi-africa.webp" alt="" loading="lazy">
+          <a class="pill" href="#mpi">See MPI Africa <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2"><path d="M4 12L12 4M6 4h6v6"/></svg></span></a></div>
+      </article>
+      <article class="svc">
+        <div class="top"><div class="tags"><span>CEH</span><span>Secure UI</span></div>
+          <h3>Secure by Design</h3>
+          <p>As a Certified Ethical Hacker I build front-ends that handle user data carefully.</p></div>
+        <div class="art"><div class="shield" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none"><path d="M48 8l32 12v24c0 22-14 38-32 44C30 82 16 66 16 44V20L48 8z" fill="#FF5B14" opacity=".9"/><path d="M34 48l10 10 18-20" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <a class="pill" href="#skills">See skills <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2"><path d="M4 12L12 4M6 4h6v6"/></svg></span></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="work" style="padding-top:24px">
+  <div class="wrap">
+    <div class="head"><div><span class="chip">Case studies</span><h2>Selected work</h2></div></div>
+    <div class="work">
+
+      <article class="case" id="mpi">
+        <div class="txt">
+          <h3>MPI Africa website rebuild</h3>
+          <div class="meta"><span>With Outbox Experience</span><span>Design and build</span><span>Webflow</span></div>
+          <p>MPI Africa is an engineering, procurement and construction company working across Africa since 2008. The brief: make the website work as hard as the sales team.</p>
+          <ul>
+            <li>Turned 15+ years, $74M+ in revenue and thousands of completed projects into a story aimed at CEOs and procurement teams.</li>
+            <li>Structured every page to move visitors from curiosity to trust to an enquiry.</li>
+            <li>Built in credibility by surfacing work with UNDP, UNICEF, Guinness Nigeria and IHS Towers.</li>
+          </ul>
+          <div class="results"><div><b>+30%</b><span>inbound enquiries from the site</span></div><div><b>$M+</b><span>new contracts closed within months</span></div></div>
+          <p class="fine">Results as reported by the client after launch.</p>
+          <a class="pill dark" href="https://mpiafrica.com/" target="_blank" rel="noopener">Visit mpiafrica.com <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2"><path d="M4 12L12 4M6 4h6v6"/></svg></span></a>
+        </div>
+        <div class="vis"><img src="assets/mpi-africa.webp" alt="MPI Africa homepage: 'Driving Infrastructure Excellence Across Africa' with stats for roads built, carbon saved and completed projects" width="800" height="506" loading="lazy"></div>
+      </article>
+
+      <article class="case" id="relay">
+        <div class="txt">
+          <h3>Relay: from "delivered" to "invoice-ready"</h3>
+          <div class="meta"><span>Product prototype</span><span>Dashboard UX</span><span>Front-end build</span></div>
+          <p>In freight, a delivered load often can't be billed yet. Finance chases proof of delivery, carrier invoices and rate confirmations across email, spreadsheets, portals and the TMS.</p>
+          <ul>
+            <li>Designed an invoice-readiness layer that sits on top of the tools a brokerage already uses.</li>
+            <li>Every delivered load is checked against its billing package; anything missing becomes an exception with an owner and an age.</li>
+            <li>One view of invoice-ready value, blocked value, open exceptions and accessorial reviews.</li>
+          </ul>
+        </div>
+        <div class="vis"><div class="flow" role="img" aria-label="Diagram: a delivered load is checked for POD, carrier invoice, rate match, accessorials and customer requirements, then becomes invoice-ready or an exception with an owner">
+          <div class="box"><small>Load status</small>Delivered</div>
+          <div class="arr">checked against its billing package</div>
+          <div class="box"><small>Relay checks</small><div class="grid"><span>POD signed</span><span>Carrier invoice</span><span>Rate matches</span><span>Accessorials</span><span>Customer rules</span><span>Owner assigned</span></div></div>
+          <div class="arr">result</div>
+          <div class="two"><div class="box ok"><small>All clear</small>Invoice-ready</div><div class="box warn"><small>Missing item</small>Exception + owner</div></div>
+        </div></div>
+      </article>
+
+      <article class="case ai" id="ai">
+        <div class="txt">
+          <h3>AI grading system for theory tests</h3>
+          <div class="meta"><span>Final year project</span><span>Python</span><span>AI</span></div>
+          <p>Computer-based tests mark multiple-choice answers instantly, but written theory answers still get graded by hand. I built a system that uses AI to grade written theory answers in computer-based tests, so lecturers can mark faster and more consistently.</p>
+        </div>
+        <div class="vis"><div class="award"><span>Chrisland University</span><b>Best Final Year Project</b><span>Department of Software Engineering, 2025</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience" style="padding-top:24px">
+  <div class="wrap">
+    <div class="head"><div><span class="chip">Experience</span><h2>Where I've worked</h2></div></div>
+    <div class="timeline">
+      <div class="job now"><span class="when">Nov 2025 – Nov 2026</span><div><h3>Front-End Developer, ActiveEdge Technologies</h3><p>Built and maintained web front-ends, mostly in React, as part of the engineering team during my NYSC year in Lagos.</p></div><span class="type" style="color:var(--ink)">NYSC · On-site</span></div>
+      <div class="job"><span class="when">Jul 2025 – present</span><div><h3>Founder &amp; Product Engineer, Ferrn</h3><p>Design and build custom web apps, internal tools, websites and automated workflows. One implementation helped a client avoid $10,000+ in costs.</p></div><span class="type">Studio · Remote</span></div>
+      <div class="job"><span class="when">Apr – Sep 2024</span><div><h3>Software Engineer Intern, Oasis Management Company</h3><p>Designed user experiences and interfaces for web applications and dashboards, and built them on the front-end.</p></div><span class="type">Internship · Hybrid</span></div>
+      <div class="job"><span class="when">2022 – 2024</span><div><h3>Freelance Front-End Developer &amp; Designer</h3><p>Responsive websites for 100+ clients on and off Upwork, including work with Outbox Experience, a leading Abuja agency.</p></div><span class="type">Freelance · Remote</span></div>
+      <div class="job"><span class="when">2018 – 2022</span><div><h3>Design and IT internships</h3><p>Marketing design at Xplorers Café; network setup and Ethernet cabling at Voisip Telecommunications.</p></div><span class="type">Internships</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="skills" style="padding-top:24px">
+  <div class="wrap">
+    <div class="head"><div><span class="chip">Toolkit</span><h2>What I work with</h2></div></div>
+    <div class="skills">
+      <div class="sk"><h3>Build</h3><div><span>React</span><span>JavaScript</span><span>HTML &amp; CSS</span><span>Node.js</span><span>Python</span><span>Webflow</span><span>Framer</span></div></div>
+      <div class="sk"><h3>Design</h3><div><span>Figma</span><span>Prototyping</span><span>Brand identity</span><span>Photoshop</span><span>Illustrator</span><span>After Effects</span><span>Blender</span></div></div>
+      <div class="sk"><h3>Credentials</h3><div><span>CEH, EC-Council</span><span>B.Sc. Software Eng., First Class</span><span>freeCodeCamp RWD</span><span>UI/UX Masterclass</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact" style="padding-top:24px">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2>Let's build something people trust.</h2>
+        <p>I'm available now for front-end, UI/UX and product design roles: on-site in Lagos, hybrid or remote.</p>
+      </div>
+      <div class="contacts">
+        <a href="mailto:osondumichealcharles@gmail.com"><small>Email</small>osondumichealcharles@gmail.com</a>
+        <a href="tel:+2348101257107"><small>Phone</small>+234 810 125 7107</a>
+        <a href="https://www.linkedin.com/in/osondu-micheal/" target="_blank" rel="noopener"><small>LinkedIn</small>osondu-micheal</a>
+        <a href="https://www.figma.com/UIUXDesigns" target="_blank" rel="noopener"><small>Figma</small>UIUXDesigns</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Osondu Michael Charles · Lagos, Nigeria</span><a href="#home">Back to top</a></div></footer>
+
+<script>
+(function(){
+  var rail=document.getElementById('rail');
+  function step(d){var c=rail.querySelector('.svc');var w=c?c.getBoundingClientRect().width+16:300;rail.scrollBy({left:d*w,behavior:'smooth'});}
+  document.getElementById('prev').addEventListener('click',function(){step(-1)});
+  document.getElementById('next').addEventListener('click',function(){step(1)});
+  var links=document.querySelectorAll('.links a');
+  var ids=[].map.call(links,function(a){return a.getAttribute('href').slice(1)});
+  window.addEventListener('scroll',function(){
+    var cur=ids[0];ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<120)cur=id;});
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)});
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
