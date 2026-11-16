@@ -53,7 +53,7 @@ nav.top .wrap{display:flex;align-items:center;justify-content:space-between;heig
 .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#FFFFFF 0%,#FFF4EE 26%,#FFB27F 58%,#FF7A2E 82%,#FF5B14 100%);padding-top:76px}
 .hero-inner{position:relative;max-width:1200px;margin:0 auto;padding:0 24px;min-height:620px}
 .bigname{position:absolute;left:0;right:0;top:40px;text-align:center;font-weight:800;font-size:clamp(56px,10.4vw,150px);line-height:.9;letter-spacing:-.05em;white-space:nowrap;background:linear-gradient(180deg,rgba(255,91,20,.55),rgba(255,91,20,.12) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;pointer-events:none}
-.portrait{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(500px,66vw);z-index:2;filter:drop-shadow(0 20px 40px rgba(120,40,0,.25))}
+.portrait{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(470px,62vw);z-index:2;filter:drop-shadow(0 20px 40px rgba(120,40,0,.25))}
 .hero-copy{position:absolute;left:24px;bottom:56px;z-index:3;max-width:430px}
 .hero-copy h1{color:#fff;font-size:clamp(38px,5vw,62px);font-weight:700;text-shadow:0 2px 24px rgba(160,50,0,.25)}
 .hero-side{position:absolute;right:24px;bottom:64px;z-index:3;max-width:300px;color:#fff}
@@ -88,10 +88,6 @@ nav.top .wrap{display:flex;align-items:center;justify-content:space-between;heig
 section.block{padding:72px 0}
 .head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:32px;flex-wrap:wrap}
 .head h2{font-size:clamp(30px,3.6vw,44px);font-weight:700;margin-top:14px;max-width:16ch}
-.arrows{display:flex;gap:10px}
-.arrows button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center}
-.arrows button.next{background:linear-gradient(135deg,var(--orange-2),var(--orange));border:0;color:#fff;box-shadow:0 6px 18px rgba(255,91,20,.35)}
-.arrows svg{width:16px;height:16px}
 .rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/4);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
 .rail::-webkit-scrollbar{display:none}
 .svc{scroll-snap-align:start;background:var(--card);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;min-height:440px}
@@ -149,6 +145,19 @@ section.block{padding:72px 0}
 .award{background:#fff;border-radius:18px;padding:22px 24px;max-width:300px;text-align:center;box-shadow:0 20px 40px rgba(120,40,0,.25)}
 .award b{display:block;font-size:20px;margin:6px 0}
 .award span{color:var(--muted);font-size:13px}
+
+/* more work grid */
+.more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.mini{display:flex;flex-direction:column;background:var(--card);border-radius:20px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .2s ease}
+.mini:hover{transform:translateY(-3px)}
+.mini img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top left;height:auto}
+.mini div{padding:20px 22px 22px;display:grid;gap:6px}
+.mini .kind{font-size:12px;font-weight:600;color:var(--muted)}
+.mini h3{font-size:22px}
+.mini p{font-size:14px;color:var(--muted)}
+.mini .go{font-size:13px;font-weight:700;color:var(--orange);margin-top:4px}
+@media (max-width:760px){.more{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.mini{transition:none}.mini:hover{transform:none}}
 
 /* EXPERIENCE */
 .timeline{display:grid;gap:12px}
@@ -226,7 +235,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <header class="hero" id="home">
   <div class="hero-inner">
     <div class="bigname" aria-hidden="true"><span>Osondu</span> <span>Michael</span></div>
-    <img class="portrait" src="assets/michael.webp" alt="Osondu Michael Charles smiling, arms folded, in a black shirt" width="519" height="624">
+    <img class="portrait" src="assets/michael.webp" alt="Osondu Michael Charles smiling, arms folded, in a black shirt" width="860" height="989">
     <div class="hero-copy">
       <h1>Design It.<br>Build It.<br>Ship It.</h1>
     </div>
@@ -270,10 +279,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <div class="head">
       <div><span class="chip">Services</span><h2>What I bring to your team</h2></div>
-      <div class="arrows">
-        <button type="button" id="prev" aria-label="Previous services"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg></button>
-        <button type="button" id="next" class="next" aria-label="Next services"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></button>
-      </div>
     </div>
     <div class="rail" id="rail">
       <article class="svc featured">
@@ -333,21 +338,33 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <article class="case" id="relay">
         <div class="txt">
           <h3>Relay: from "delivered" to "invoice-ready"</h3>
-          <div class="meta"><span>Product prototype</span><span>Dashboard UX</span><span>Front-end build</span></div>
+          <div class="meta"><span>Web app</span><span>Next.js + TypeScript</span><span>Dashboard UX</span></div>
           <p>In freight, a delivered load often can't be billed yet. Finance chases proof of delivery, carrier invoices and rate confirmations across email, spreadsheets, portals and the TMS.</p>
           <ul>
             <li>Designed an invoice-readiness layer that sits on top of the tools a brokerage already uses.</li>
             <li>Every delivered load is checked against its billing package; anything missing becomes an exception with an owner and an age.</li>
             <li>One view of invoice-ready value, blocked value, open exceptions and accessorial reviews.</li>
           </ul>
+          <p class="fine">Built in Next.js and TypeScript. The demo runs on sample data, so you can click through every screen.</p>
+          <a class="pill dark" href="relay/" target="_blank" rel="noopener">Open the live demo <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2"><path d="M4 12L12 4M6 4h6v6"/></svg></span></a>
         </div>
-        <div class="vis"><div class="flow" role="img" aria-label="Diagram: a delivered load is checked for POD, carrier invoice, rate match, accessorials and customer requirements, then becomes invoice-ready or an exception with an owner">
-          <div class="box"><small>Load status</small>Delivered</div>
-          <div class="arr">checked against its billing package</div>
-          <div class="box"><small>Relay checks</small><div class="grid"><span>POD signed</span><span>Carrier invoice</span><span>Rate matches</span><span>Accessorials</span><span>Customer rules</span><span>Owner assigned</span></div></div>
-          <div class="arr">result</div>
-          <div class="two"><div class="box ok"><small>All clear</small>Invoice-ready</div><div class="box warn"><small>Missing item</small>Exception + owner</div></div>
-        </div></div>
+        <div class="vis"><img src="assets/relay.webp" alt="Relay dashboard: invoice-ready value, blocked invoice value, accessorial review, revenue states and recent load exceptions" width="1000" height="597" loading="lazy"></div>
+      </article>
+
+      <article class="case" id="ataam">
+        <div class="txt">
+          <h3>Ataam Healthcare: care operations app</h3>
+          <div class="meta"><span>Web app</span><span>Healthcare</span><span>Built with Ferrn</span></div>
+          <p>Ataam is a web app for a care provider. Care staff sign in to manage their shifts, patients and care notes in one place, instead of juggling paper and phone calls.</p>
+          <ul>
+            <li>Sign-in and role-based access for care staff and operations teams.</li>
+            <li>New patient records flow to operations for review and assignment, with email notifications.</li>
+            <li>Shifts, patients and care notes kept together, so handovers don't get lost.</li>
+          </ul>
+          <p class="fine">Live app. Opening it shows the sign-in screen; it may take a few seconds to wake up.</p>
+          <a class="pill dark" href="https://ataam-frontend.onrender.com/" target="_blank" rel="noopener">Open Ataam <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2"><path d="M4 12L12 4M6 4h6v6"/></svg></span></a>
+        </div>
+        <div class="vis"><img style="object-position:center" src="assets/ataam.webp" alt="Ataam Healthcare sign-in screen with a carer talking to an elderly patient: 'Sign in to manage your shifts, patients, and care notes'" width="907" height="478" loading="lazy"></div>
       </article>
 
       <article class="case ai" id="ai">
@@ -358,6 +375,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         </div>
         <div class="vis"><div class="award"><span>Chrisland University</span><b>Best Final Year Project</b><span>Department of Software Engineering, 2025</span></div></div>
       </article>
+    </div>
+
+    <div class="head" style="margin-top:56px"><div><span class="chip">More shipped work</span><h2>Client websites</h2></div></div>
+    <div class="more">
+      <a class="mini" href="https://www.gromzialtd.com/" target="_blank" rel="noopener">
+        <img src="assets/gromzia.webp" alt="Gromzia Ventures homepage: From Port to Destination, with stats for clients, projects and countries served" width="907" height="478" loading="lazy">
+        <div><span class="kind">Corporate website · Logistics · 2024</span><h3>Gromzia Ventures</h3><p>Customs, clearing and marine logistics, restructured around service clarity, proof and fast contact paths.</p><span class="go">Visit site ↗</span></div>
+      </a>
+      <a class="mini" href="https://www.synergixafrica.com/" target="_blank" rel="noopener">
+        <img src="assets/synergix.webp" alt="Synergix Africa homepage: From Idea to Impact, Powering Africa's Next Generation of Entrepreneurs" width="907" height="478" loading="lazy">
+        <div><span class="kind">Platform website · Entrepreneurship · 2025</span><h3>Synergix Africa</h3><p>Programs, funding, tools and community support organised into clear journeys for entrepreneurs at every stage.</p><span class="go">Visit site ↗</span></div>
+      </a>
+      <a class="mini" href="https://insightblitz.io/" target="_blank" rel="noopener">
+        <img src="assets/insightblitz.webp" alt="Insightblitz homepage: We Turn Web3 Projects Into Market Leaders Through GTM + KOL Growth" width="907" height="478" loading="lazy">
+        <div><span class="kind">Growth website · Web3 · 2026</span><h3>Insightblitz</h3><p>A sharper authority and go-to-market story for a Web3 growth partner running KOL campaigns and launches.</p><span class="go">Visit site ↗</span></div>
+      </a>
+      <a class="mini" href="https://www.arodagroup.com/" target="_blank" rel="noopener">
+        <img src="assets/aroda.webp" alt="Aroda homepage: Driving Solutions. Delivering Results." width="907" height="478" loading="lazy">
+        <div><span class="kind">Group website · Multi-sector · 2026</span><h3>Aroda</h3><p>A multi-business group across IT, consulting, procurement, agriculture and finance, told as one clear story.</p><span class="go">Visit site ↗</span></div>
+      </a>
     </div>
   </div>
 </section>
@@ -408,10 +445,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <script>
 (function(){
-  var rail=document.getElementById('rail');
-  function step(d){var c=rail.querySelector('.svc');var w=c?c.getBoundingClientRect().width+16:300;rail.scrollBy({left:d*w,behavior:'smooth'});}
-  document.getElementById('prev').addEventListener('click',function(){step(-1)});
-  document.getElementById('next').addEventListener('click',function(){step(1)});
   var links=document.querySelectorAll('.links a');
   var ids=[].map.call(links,function(a){return a.getAttribute('href').slice(1)});
   window.addEventListener('scroll',function(){
