@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Michael Charles Osondu | Virtual Assistant & Operations Support</title>
+<meta name="description" content="Tech-savvy, AI-enabled virtual assistant in Lagos, Nigeria. Inbox and calendar management, client communication, research, outreach, project tracking and website updates. Works US, UK and Australian hours.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FF5B14'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='white'%3EOM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#FF5B14;--ink:#111216;--muted:#62666F;--card:#F4F5F7;--line:#E6E7EB;--bg:#FFFFFF;--font:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo span{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:9px;background:var(--orange);color:#fff;font-size:13px}
+.navlinks{display:flex;gap:22px;font-size:14px;font-weight:600}
+.navlinks a{text-decoration:none;color:var(--muted)}
+.navlinks a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid var(--ink);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--orange);border-color:var(--orange);color:#fff}
+.hero{padding:72px 0 56px;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+h1{font-size:clamp(36px,5.4vw,60px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--orange)}
+.lead{font-size:18px;color:var(--muted);margin:20px 0 28px;max-width:560px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.photo{position:relative}
+.photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:28px;background:var(--card)}
+.badge{position:absolute;left:-18px;bottom:24px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 16px;font-size:13px;font-weight:600;box-shadow:0 10px 30px rgba(17,18,22,.08)}
+.badge b{display:block;font-size:20px;color:var(--orange)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:8px 0 64px}
+.stat{background:var(--card);border-radius:20px;padding:22px}
+.stat b{display:block;font-size:30px;font-weight:800;letter-spacing:-.02em}
+.stat span{font-size:14px;color:var(--muted)}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.sub{color:var(--muted);max-width:620px;margin-bottom:36px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border-radius:22px;padding:26px}
+.card .ic{width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:22px;margin-bottom:16px}
+.card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.card p,.card li{font-size:15px;color:var(--muted)}
+.card ul{padding-left:18px}
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tool{border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.tool b{display:block;font-size:15px}
+.tool span{font-size:13px;color:var(--muted)}
+.tgroup{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--orange);margin:28px 0 12px}
+.tgroup:first-of-type{margin-top:0}
+.timeline{display:grid;gap:14px}
+.job{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
+.job:last-child{border-bottom:0}
+.job .when{font-size:14px;color:var(--muted);font-weight:600}
+.job h3{font-size:18px;font-weight:700}
+.job .org{color:var(--orange);font-weight:600;font-size:15px;margin-bottom:8px}
+.job ul{padding-left:18px;color:var(--muted);font-size:15px}
+.proof{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.proof .card{display:flex;flex-direction:column}
+.proof .num{font-size:40px;font-weight:800;color:var(--orange);letter-spacing:-.02em;line-height:1}
+.proof a{margin-top:14px;font-weight:700;font-size:14px;text-decoration:none;color:var(--ink)}
+.proof a:hover{color:var(--orange)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{border:1px solid var(--line);border-radius:20px;padding:22px}
+.step:before{counter-increment:s;content:"0" counter(s);display:block;font-weight:800;color:var(--orange);margin-bottom:10px}
+.step h3{font-size:16px;margin-bottom:6px}
+.step p{font-size:14px;color:var(--muted)}
+.contact{background:var(--ink);color:#fff;border-radius:32px;padding:56px;margin:64px 0;display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+.contact h2{color:#fff}
+.contact p{color:#B9BCC4}
+.contact .links{display:grid;gap:10px}
+.contact .links a{display:flex;justify-content:space-between;padding:14px 18px;border:1px solid #2A2C33;border-radius:14px;text-decoration:none;font-weight:600}
+.contact .links a:hover{border-color:var(--orange)}
+footer{padding:28px 0 40px;color:var(--muted);font-size:14px;text-align:center}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.photo{max-width:380px}.stats{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr 1fr}.tools{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr 1fr}.contact{grid-template-columns:1fr;padding:36px}.proof{grid-template-columns:1fr}}
+@media(max-width:600px){.navlinks{display:none}.grid3,.steps{grid-template-columns:1fr}.job{grid-template-columns:1fr;gap:6px}.badge{left:12px}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="logo" href="#top"><span>OM</span>Michael Osondu</a>
+  <div class="navlinks"><a href="#services">Services</a><a href="#tools">Tools</a><a href="#experience">Experience</a><a href="#proof">Results</a><a href="#contact">Contact</a></div>
+  <a class="btn primary" href="mailto:osondumichealcharles@gmail.com?subject=Virtual%20Assistant%20enquiry">Hire me</a>
+</div></nav>
+
+<main id="top" class="wrap">
+  <header class="hero">
+    <div>
+      <span class="eyebrow">Virtual Assistant &amp; Operations Support</span>
+      <h1>I keep your inbox, calendar and operations <em>moving</em>, so you can focus on the work only you can do.</h1>
+      <p class="lead">I'm Michael, a tech-savvy, AI-enabled virtual assistant based in Lagos, Nigeria. I run the day-to-day operations of my own studio and have worked with 100+ international clients, so I know what good support looks like from both sides. I work US, UK and Australian hours.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:osondumichealcharles@gmail.com?subject=Virtual%20Assistant%20enquiry">Email me</a>
+        <a class="btn" href="Osondu_Michael_Charles_CV_VA.pdf" target="_blank" rel="noopener">Download CV</a>
+      </div>
+    </div>
+    <div class="photo">
+      <img src="../assets/michael.webp" alt="Michael Charles Osondu">
+      <div class="badge"><b>Available now</b>Full-time or part-time, remote</div>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><b>100+</b><span>international clients served on and off Upwork</span></div>
+    <div class="stat"><b>$10k+</b><span>in costs a client avoided with a workflow I built</span></div>
+    <div class="stat"><b>+30%</b><span>inbound enquiries after a website rebuild I led</span></div>
+    <div class="stat"><b>1st Class</b><span>B.Sc. Software Engineering (CGPA 4.71/5)</span></div>
+  </div>
+</main>
+
+<section id="services"><div class="wrap">
+  <h2>What I can take off your plate</h2>
+  <p class="sub">The same work I do every day running Ferrn, my software studio, and for clients.</p>
+  <div class="grid3">
+    <div class="card"><div class="ic">📥</div><h3>Inbox &amp; calendar</h3><ul><li>Inbox triage, labels and drafted replies</li><li>Meeting scheduling across time zones</li><li>Reminders and follow-ups so nothing slips</li></ul></div>
+    <div class="card"><div class="ic">💬</div><h3>Client communication</h3><ul><li>First-line replies to clients and leads</li><li>Proposals and follow-up emails</li><li>Clear, professional written English</li></ul></div>
+    <div class="card"><div class="ic">🔎</div><h3>Research &amp; lead lists</h3><ul><li>Web research and summaries</li><li>Prospect and lead lists in Sheets</li><li>Outreach email campaigns</li></ul></div>
+    <div class="card"><div class="ic">📋</div><h3>Projects &amp; documentation</h3><ul><li>Project tracking in Notion or Sheets</li><li>Meeting notes and documentation</li><li>Basic data handling in spreadsheets</li></ul></div>
+    <div class="card"><div class="ic">⚙️</div><h3>Automation &amp; AI</h3><ul><li>Automating repetitive admin steps</li><li>Using Claude and ChatGPT to draft and research faster</li><li>Simple internal tools when a spreadsheet isn't enough</li></ul></div>
+    <div class="card"><div class="ic">🎨</div><h3>Website &amp; design support</h3><ul><li>Website updates in Webflow, HTML/CSS or React</li><li>Social graphics and banners</li><li>Basic IT setup and security-aware habits (CEH)</li></ul></div>
+  </div>
+</div></section>
+
+<section id="tools"><div class="wrap">
+  <h2>Tools I use</h2>
+  <p class="sub">Comfortable picking up your stack quickly. A software engineering degree helps.</p>
+  <p class="tgroup">Admin &amp; productivity</p>
+  <div class="tools">
+    <div class="tool"><b>Gmail</b><span>Inbox management</span></div>
+    <div class="tool"><b>Google Calendar</b><span>Scheduling</span></div>
+    <div class="tool"><b>Google Docs</b><span>Documents &amp; notes</span></div>
+    <div class="tool"><b>Google Sheets</b><span>Trackers &amp; lists</span></div>
+    <div class="tool"><b>Notion</b><span>Projects &amp; docs</span></div>
+    <div class="tool"><b>Upwork</b><span>Client work</span></div>
+    <div class="tool"><b>Time-tracking tools</b><span>Transparent hours</span></div>
+    <div class="tool"><b>LinkedIn</b><span>Research &amp; outreach</span></div>
+  </div>
+  <p class="tgroup">AI</p>
+  <div class="tools">
+    <div class="tool"><b>Claude</b><span>Drafting, research, automation</span></div>
+    <div class="tool"><b>ChatGPT</b><span>Drafting &amp; research</span></div>
+    <div class="tool"><b>Midjourney</b><span>Visuals</span></div>
+    <div class="tool"><b>Runway</b><span>AI video</span></div>
+  </div>
+  <p class="tgroup">Design &amp; web</p>
+  <div class="tools">
+    <div class="tool"><b>Figma</b><span>Design &amp; mockups</span></div>
+    <div class="tool"><b>Photoshop</b><span>Image editing</span></div>
+    <div class="tool"><b>Illustrator</b><span>Graphics</span></div>
+    <div class="tool"><b>Webflow</b><span>Website updates</span></div>
+    <div class="tool"><b>HTML / CSS</b><span>Web edits</span></div>
+    <div class="tool"><b>React</b><span>Web apps</span></div>
+    <div class="tool"><b>GitHub</b><span>Version control</span></div>
+    <div class="tool"><b>VS Code</b><span>Editing</span></div>
+  </div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <h2>Experience</h2>
+  <p class="sub">Operations, client service and technical work, side by side.</p>
+  <div class="timeline">
+    <div class="job"><div class="when">Jul 2025 – present</div><div><h3>Founder &amp; Product Engineer</h3><div class="org">Ferrn (software and digital product studio)</div><ul><li>Run the studio day to day: client communication, proposals, outreach email campaigns, scheduling, project tracking and delivery.</li><li>Build websites, internal tools and automated workflows; one implementation helped a client avoid more than $10,000 in costs.</li></ul></div></div>
+    <div class="job"><div class="when">Nov 2025 – Nov 2026</div><div><h3>Front-End Developer (NYSC)</h3><div class="org">ActiveEdge Technologies, Lagos</div><ul><li>Built and maintained web front-ends, mostly in React, as part of the engineering team.</li></ul></div></div>
+    <div class="job"><div class="when">Apr – Sep 2024</div><div><h3>Software Engineer Intern (UX &amp; Front-End)</h3><div class="org">Oasis Management Company</div><ul><li>Designed and built interfaces for web applications and dashboards.</li></ul></div></div>
+    <div class="job"><div class="when">2022 – 2024</div><div><h3>Freelancer: websites &amp; design</h3><div class="org">Upwork and direct clients (remote)</div><ul><li>Worked with 100+ international clients: scoping requests, communicating progress, meeting deadlines and delivering.</li><li>Collaborated with Outbox Experience, an Abuja agency, on client websites including MPI Africa.</li></ul></div></div>
+    <div class="job"><div class="when">2018 – 2022</div><div><h3>Earlier roles</h3><div class="org">Graphic Design Intern, Xplorers Café · IT Intern, Voisip Telecommunications</div><ul><li>Designed brochures, banners and social graphics; set up Ethernet cabling and configured local networks.</li></ul></div></div>
+  </div>
+</div></section>
+
+<section id="proof"><div class="wrap">
+  <h2>Results</h2>
+  <p class="sub">Work I can walk you through on a call.</p>
+  <div class="proof">
+    <div class="card"><div class="num">+30%</div><h3 style="margin-top:12px">MPI Africa website rebuild</h3><p>Restructured the site around the company's track record and partners with a clear enquiry path. The client reported a 30% rise in inbound enquiries.</p><a href="https://mpiafrica.com" target="_blank" rel="noopener">mpiafrica.com →</a></div>
+    <div class="card"><div class="num">$10k+</div><h3 style="margin-top:12px">Workflow automation for a client</h3><p>A Ferrn implementation that replaced a manual process and helped the client avoid more than $10,000 in costs.</p></div>
+    <div class="card"><div class="num">Live</div><h3 style="margin-top:12px">Ataam Healthcare</h3><p>A web app care teams use to manage staff shifts, patients and care notes. Built by Ferrn.</p><a href="https://ataam-frontend.onrender.com/" target="_blank" rel="noopener">View the app →</a></div>
+    <div class="card"><div class="num">Live</div><h3 style="margin-top:12px">Relay</h3><p>An operations tool for freight brokerages that tracks each delivered load against its billing package, with exceptions and owners.</p><a href="../relay/" target="_blank" rel="noopener">Open the demo →</a></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>How I work</h2>
+  <p class="sub">Simple, visible and reliable.</p>
+  <div class="steps">
+    <div class="step"><h3>Onboard</h3><p>I learn your tools, priorities and preferences, and write them down so nothing depends on memory.</p></div>
+    <div class="step"><h3>Own the routine</h3><p>Inbox, calendar and follow-ups handled daily, with anything needing your decision flagged clearly.</p></div>
+    <div class="step"><h3>Report</h3><p>A short end-of-day update: what's done, what's pending, what needs you. Hours tracked transparently.</p></div>
+    <div class="step"><h3>Improve</h3><p>I look for repetitive tasks to automate, so you get more done each week.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Education &amp; certifications</h2>
+  <div class="grid3">
+    <div class="card"><h3>B.Sc. Software Engineering</h3><p>Chrisland University, 2021 – 2025. First Class Honours, CGPA 4.71/5.00. NYSC completed November 2026.</p></div>
+    <div class="card"><h3>Certified Ethical Hacker (CEH)</h3><p>EC-Council. Security-aware handling of your accounts, passwords and data.</p></div>
+    <div class="card"><h3>Also</h3><p>Responsive Web Design (freeCodeCamp) · UI/UX Design Masterclass (Udemy)</p></div>
+  </div>
+</div></section>
+
+<div class="wrap">
+  <div class="contact" id="contact">
+    <div><h2>Let's get your week back.</h2><p>Full-time or part-time, remote. I can start immediately and work US, UK or Australian hours from Lagos (WAT, UTC+1).</p></div>
+    <div class="links">
+      <a href="mailto:osondumichealcharles@gmail.com?subject=Virtual%20Assistant%20enquiry">osondumichealcharles@gmail.com <span>→</span></a>
+      <a href="https://www.linkedin.com/in/osondu-micheal" target="_blank" rel="noopener">LinkedIn <span>→</span></a>
+      <a href="Osondu_Michael_Charles_CV_VA.pdf" target="_blank" rel="noopener">Download CV (PDF) <span>→</span></a>
+      <a href="../">Design &amp; development portfolio <span>→</span></a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Michael Charles Osondu · Lagos, Nigeria</footer>
+</body>
+</html>
