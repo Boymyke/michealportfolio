@@ -5,174 +5,235 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chaos in the Ring</title>
 <meta name="description" content="Balmoral Group Promotions presents Chaos in the Ring — where glory meets chaos. Fight card, fight week schedule and tickets.">
+<link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="title.webp">
 <style>
 /* VOICE: fight-night hype, loud but disciplined — the poster blown up into a site.
-   IDEA: the boxing ring itself — red ropes slash across every band, fighters meet in the middle.
-   PICTURE: the poster's face-off, split in two halves that slam together, chrome title over the top.
-   COLOUR and TYPE: poster red #c80303 / #dd0101, blood-dark #160101, chrome white; Montserrat 600–900 as on the poster.
-   LAYOUT: centred poster-style hero, countdown strip, tale of the tape, card, fight week, tickets, partners, footer. */
-:root{color-scheme:dark;--red:#d10202;--red2:#8a0303;--deep:#160101;--deep2:#230303;--ink:#fff5f3;--mute:#e7b9b2;--line:rgba(255,220,214,.16);--chrome:linear-gradient(180deg,#fff 0%,#d9d3d3 45%,#8f8585 55%,#f1ecec 100%)}
+   IDEA: the boxing ring — red ropes slash across every band, fighters collide in the middle, chrome lettering.
+   PICTURE: the poster face-off on a blurred full-bleed copy of itself, 3D chrome title slammed on top, sparks rising.
+   COLOUR and TYPE: poster red #d10202 / #8a0303, blood-dark #160101, hammered-metal headings; Montserrat 600–900.
+   LAYOUT: centred poster hero, ticker, countdown, tale of the tape, card, fight week, tickets, partners, share, info. */
+:root{color-scheme:dark;--red:#d10202;--red2:#8a0303;--deep:#140101;--deep2:#210303;--ink:#fff5f3;--mute:#e7b9b2;--line:rgba(255,220,214,.16)}
 *{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:72px}
 body{margin:0;background:var(--deep);color:var(--ink);font:500 16px/1.6 Montserrat,system-ui,sans-serif;overflow-x:clip}
-img{display:block;max-width:100%}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 :focus-visible{outline:3px solid #fff;outline-offset:3px}
-.wrap{max-width:1240px;margin:0 auto}
-.band{padding:clamp(56px,7vw,110px) max(5vw,16px);position:relative}
-h2{font:900 clamp(32px,5vw,52px)/1.05 Montserrat,sans-serif;text-transform:uppercase;margin:0 0 14px;text-wrap:balance}
+.wrap{max-width:1240px;margin:0 auto;position:relative;z-index:2}
+/* ---------- TEXTURE SYSTEM ---------- */
+body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.09;
+ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+.band{padding:clamp(64px,8vw,130px) max(5vw,16px);position:relative;isolation:isolate;overflow:hidden}
+.tex::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url(grunge.png) 0 0/420px repeat;mix-blend-mode:multiply;opacity:.55}
+.dust::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url(dust.png) 120px 60px/520px repeat;opacity:.22}
+.spot{background:radial-gradient(70% 55% at 50% 0%,rgba(209,2,2,.28),transparent 70%),radial-gradient(40% 40% at 90% 100%,rgba(209,2,2,.14),transparent 70%),linear-gradient(180deg,var(--deep),var(--deep2))}
+.halftone{background-image:radial-gradient(rgba(0,0,0,.22) 1.2px,transparent 1.7px),linear-gradient(160deg,#e00505,#a50202);background-size:9px 9px,100% 100%}
+.ghost{position:absolute;z-index:1;pointer-events:none;font:italic 900 clamp(90px,19vw,300px)/.8 Montserrat;text-transform:uppercase;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.07);top:clamp(20px,4vw,50px);left:-2vw;letter-spacing:-.02em}
+.card .ghost{-webkit-text-stroke-color:rgba(0,0,0,.18)}
+.rope-div{position:absolute;left:-10vw;width:120vw;height:12px;border-radius:99px;z-index:3;pointer-events:none;
+ background:linear-gradient(180deg,#ff6a5a 0%,#d40808 35%,#7a0000 80%,#3a0000 100%);box-shadow:0 10px 22px rgba(0,0,0,.5);filter:blur(1.2px);transform:rotate(-2.5deg);animation:sway 7s ease-in-out infinite alternate}
+.rope-div.top{top:-6px}.rope-div.bot{bottom:-6px;transform:rotate(2deg);animation-delay:-3s}
+@keyframes sway{to{transform:rotate(-1deg) translateY(4px)}}
+/* metal headings */
+h2{font:900 clamp(34px,5.4vw,60px)/1.02 Montserrat,sans-serif;text-transform:uppercase;margin:0 0 14px;text-wrap:balance;
+ background:url(metal.jpg) center/cover;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 #5a0000) drop-shadow(0 10px 18px rgba(0,0,0,.45))}
 .lede{color:var(--mute);max-width:62ch;margin:0 0 36px}
-.note{font-size:13px;color:var(--mute);opacity:.8;margin-top:20px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;border-radius:4px;font:800 15px Montserrat,sans-serif;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s,background .2s,color .2s}
-.btn:hover{transform:translateY(-2px)}
-.btn.solid{background:#fff;color:var(--red2)}
-.btn.solid:hover{background:var(--ink)}
-.btn.ghost{border-color:#fff;color:#fff;background:transparent}
-.btn.ghost:hover{background:#fff;color:var(--red2)}
-/* NAV */
-nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px max(5vw,16px);transition:background .3s}
-nav.solid{background:rgba(22,1,1,.92);backdrop-filter:blur(8px)}
-.brand{font:700 13px/1.2 Montserrat;letter-spacing:.3em;text-transform:uppercase;text-decoration:none}
+.note{font-size:13px;color:var(--mute);opacity:.8;margin-top:22px}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;border-radius:4px;font:800 15px Montserrat,sans-serif;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;border:2px solid transparent;cursor:pointer;overflow:hidden;transition:background .2s,color .2s,box-shadow .2s}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);transition:transform .6s}
+.btn:hover::after{transform:translateX(120%)}
+.btn.solid{background:#fff;color:var(--red2);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.btn.solid:hover{box-shadow:0 10px 34px rgba(255,60,40,.45)}
+.btn.ghostb{border-color:#fff;color:#fff;background:transparent}
+.btn.ghostb:hover{background:#fff;color:var(--red2)}
+/* ---------- PRELOADER ---------- */
+.pre{position:fixed;inset:0;z-index:200;display:grid;place-items:center;pointer-events:none}
+.pre i{position:absolute;left:0;right:0;height:50.5%;background:#160101 url(grunge.png) 0 0/420px}
+.pre i:first-child{top:0}.pre i:nth-child(2){bottom:0}
+.pre img{position:relative;width:110px}
+.pre b{position:absolute;top:calc(50% + 74px);width:140px;height:4px;border-radius:9px;background:rgba(255,255,255,.15);overflow:hidden}
+.pre b::after{content:"";position:absolute;inset:0;background:var(--red);transform-origin:left;animation:load 1s ease-out forwards}
+@keyframes load{from{transform:scaleX(0)}}
+.no-js .pre,.reduced .pre{display:none}
+/* ---------- NAV ---------- */
+nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px max(5vw,16px);transition:background .3s,padding .3s}
+nav.solid{background:rgba(20,1,1,.9);backdrop-filter:blur(10px);padding-block:8px}
+.brand{display:flex;align-items:center;gap:12px;font:700 13px/1.2 Montserrat;letter-spacing:.3em;text-transform:uppercase;text-decoration:none}
+.brand img{width:52px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
 .links{display:flex;gap:26px;font:700 14px Montserrat}
-.links a{text-decoration:none;opacity:.85}.links a:hover{opacity:1}
+.links a{position:relative;text-decoration:none;opacity:.85;padding:6px 0}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#fff;transform:scaleX(0);transform-origin:right;transition:transform .3s}
+.links a:hover{opacity:1}.links a:hover::after{transform:scaleX(1);transform-origin:left}
 nav .btn{min-height:44px;padding:0 18px;font-size:13px}
 @media(max-width:860px){.links{display:none}}
-@media(max-width:700px){.hero{min-height:0;padding-bottom:56px}}
-/* HERO */
-.hero{position:relative;min-height:min(100svh,1000px);padding:84px 16px 40px;display:flex;flex-direction:column;align-items:center;overflow:hidden;isolation:isolate;
- background:radial-gradient(60% 50% at 50% 38%,#ff1a0d 0%,#d10202 35%,#7a0202 75%,#1a0101 100%)}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;mix-blend-mode:multiply;
- background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 0 0 0 0 0 0 0 0 0 1.4 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.presents{position:relative;z-index:5;font:600 clamp(11px,1.5vw,15px)/1.4 Montserrat;letter-spacing:.32em;text-transform:uppercase;text-align:center;margin:0 0 8px}
-.hero{--sw:min(calc(100vw - 32px),980px,80svh)}
+@media(max-width:480px){.brand span{display:none}}
+/* ---------- HERO ---------- */
+.hero{--sw:min(calc(100vw - 32px),1000px,74svh);position:relative;min-height:min(100svh,1100px);padding:84px 16px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;background:#8a0202}
+.backdrop{position:absolute;inset:-8%;z-index:-3;background:url(poster.jpg) center 28%/cover;filter:blur(60px) saturate(1.3) brightness(.55);opacity:.5;transform:scale(1.15)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(55% 60% at 50% 40%,rgba(255,30,15,.6),transparent 72%),radial-gradient(120% 90% at 50% 45%,transparent 40%,rgba(14,0,0,.94) 100%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:url(grunge.png) 0 0/420px;mix-blend-mode:multiply;opacity:.6}
+.hero-logo{position:relative;z-index:5;width:clamp(64px,7vw,92px);margin:0 auto 6px;filter:drop-shadow(0 4px 14px rgba(40,0,0,.6))}
 .stage{position:relative;width:var(--sw);aspect-ratio:941/795}
 .half{position:absolute;top:0;width:50.05%;height:100%;object-fit:cover;-webkit-mask-composite:source-in;mask-composite:intersect}
-.half.l{left:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10%),linear-gradient(180deg,transparent 0,#000 9%,#000 70%,transparent 98%);mask-image:linear-gradient(90deg,transparent 0,#000 10%),linear-gradient(180deg,transparent 0,#000 9%,#000 70%,transparent 98%)}
-.half.r{right:0;-webkit-mask-image:linear-gradient(270deg,transparent 0,#000 10%),linear-gradient(180deg,transparent 0,#000 9%,#000 70%,transparent 98%);mask-image:linear-gradient(270deg,transparent 0,#000 10%),linear-gradient(180deg,transparent 0,#000 9%,#000 70%,transparent 98%)}
-.rope{position:absolute;left:-20vw;width:140vw;height:clamp(14px,2.2vw,30px);border-radius:99px;z-index:3;pointer-events:none;
+.half.l{left:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%),linear-gradient(180deg,transparent 0,#000 14%,#000 66%,transparent 97%);mask-image:linear-gradient(90deg,transparent 0,#000 30%),linear-gradient(180deg,transparent 0,#000 14%,#000 66%,transparent 97%)}
+.half.r{right:0;-webkit-mask-image:linear-gradient(270deg,transparent 0,#000 30%),linear-gradient(180deg,transparent 0,#000 14%,#000 66%,transparent 97%);mask-image:linear-gradient(270deg,transparent 0,#000 30%),linear-gradient(180deg,transparent 0,#000 14%,#000 66%,transparent 97%)}
+.rope{position:absolute;left:-20vw;width:140vw;height:clamp(14px,2vw,28px);border-radius:99px;z-index:3;pointer-events:none;
  background:linear-gradient(180deg,#ff5a4a 0%,#d40808 30%,#7a0000 75%,#3a0000 100%);filter:blur(3px);box-shadow:0 18px 30px rgba(40,0,0,.55)}
-.rope.a{top:13%;transform:rotate(-14deg)}
-.rope.b{top:62%;transform:rotate(-14deg);filter:blur(5px)}
-.titleblock{position:relative;z-index:4;margin-top:calc(var(--sw) * -.3);width:min(100%,calc(var(--sw) * .95));text-align:center}
-.titleblock img{width:100%;height:auto;filter:drop-shadow(0 16px 24px rgba(40,0,0,.7))}
-.tag{font:900 clamp(18px,2.7vw,32px)/1.15 Montserrat;text-transform:uppercase;letter-spacing:.06em;margin:6px 0 0;text-shadow:0 4px 18px rgba(60,0,0,.6)}
-.when{margin:16px 0 22px;font:700 clamp(14px,1.8vw,18px) Montserrat}
-.when span{opacity:.6;margin:0 10px}
+.rope.a{top:12%;rotate:-13deg}.rope.b{top:63%;rotate:-13deg;filter:blur(5px)}
+#sparks{position:absolute;inset:0;z-index:4;pointer-events:none;width:100%;height:100%}
+.flash{position:absolute;inset:0;z-index:6;background:#fff;opacity:0;pointer-events:none}
+.titleblock{position:relative;z-index:5;margin-top:calc(var(--sw) * -.34);width:min(100%,calc(var(--sw) * 1.02));text-align:center}
+.titleblock h1{margin:0}
+.titleblock h1 img{width:100%;filter:drop-shadow(0 18px 26px rgba(30,0,0,.75))}
+.tag{font:900 clamp(18px,2.6vw,32px)/1.15 Montserrat;text-transform:uppercase;letter-spacing:.06em;margin:0;text-shadow:0 4px 18px rgba(60,0,0,.7)}
+.when{margin:14px 0 22px;font:700 clamp(14px,1.7vw,18px) Montserrat}
+.when i{font-style:normal;opacity:.6;margin:0 10px}
 .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-/* load choreography */
-.js .half.l{transform:translateX(-30%);opacity:0}.js .half.r{transform:translateX(30%);opacity:0}
-.js .titleblock img{transform:scale(1.6);opacity:0}.js .rope{opacity:0}
-.js .tag,.js .when,.js .ctas,.js .presents{opacity:0;transform:translateY(16px)}
-.go .half{transform:none!important;opacity:1!important;transition:transform 1s cubic-bezier(.2,.9,.2,1),opacity .8s}
-.go .rope{opacity:1!important;transition:opacity .8s .4s}
-.go .titleblock img{transform:none!important;opacity:1!important;transition:transform .45s cubic-bezier(.5,0,.2,1.2) .9s,opacity .2s .9s}
-.go .titleblock{animation:shake .4s 1.32s}
-.go .presents,.go .tag,.go .when,.go .ctas{opacity:1!important;transform:none!important;transition:all .6s 1.4s}
-.go .when{transition-delay:1.55s}.go .ctas{transition-delay:1.7s}
-@keyframes shake{20%{transform:translate(-6px,4px)}40%{transform:translate(5px,-3px)}60%{transform:translate(-3px,2px)}80%{transform:translate(2px,-1px)}}
-/* COUNTDOWN */
-.count{background:#fff;color:var(--deep);padding:22px max(5vw,16px)}
+.scrollcue{position:absolute;bottom:18px;left:50%;translate:-50% 0;z-index:5;width:24px;height:38px;border:2px solid rgba(255,255,255,.6);border-radius:14px}
+.scrollcue::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:4px;background:#fff;animation:cue 1.6s infinite}
+@keyframes cue{to{transform:translateY(12px);opacity:0}}
+@media(max-width:700px){.hero.hero{min-height:0;padding-bottom:64px}.scrollcue{display:none}}
+/* ---------- TICKER ---------- */
+.tickwrap{position:relative;z-index:4;overflow:hidden;padding:18px 0;margin:-28px 0 -18px}
+.ticker{position:relative;z-index:4;background:#0c0000;border-block:2px solid var(--red);overflow:hidden;padding:14px 0;rotate:-1.2deg;margin:-10px -2vw 0;box-shadow:0 14px 30px rgba(0,0,0,.5)}
+.track{display:flex;width:max-content;animation:marq 26s linear infinite}
+.track span{font:italic 900 clamp(22px,3vw,38px)/1 Montserrat;text-transform:uppercase;padding-right:.9em;white-space:nowrap;background:url(metal.jpg) center/cover;-webkit-background-clip:text;background-clip:text;color:transparent}
+.track span:nth-child(even){-webkit-text-stroke:1.5px rgba(255,90,70,.9);background:none;color:transparent}
+@keyframes marq{to{transform:translateX(-50%)}}
+/* ---------- COUNTDOWN ---------- */
+.count{position:relative;background:#f6efed;color:var(--deep);padding:30px max(5vw,16px) 26px;isolation:isolate;overflow:hidden}
+.count::before{content:"";position:absolute;inset:0;z-index:-1;background:url(grunge.png) 0 0/420px;opacity:.35}
 .count .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .count b{font:900 13px Montserrat;text-transform:uppercase;letter-spacing:.12em;color:var(--red2)}
-.clock{display:flex;gap:clamp(14px,3vw,40px)}
-.clock div{text-align:center}
-.clock strong{display:block;font:900 clamp(30px,5vw,52px)/1 Montserrat;font-variant-numeric:tabular-nums;color:var(--red)}
-.clock small{font:700 12px Montserrat;text-transform:uppercase;letter-spacing:.1em}
-/* TALE OF THE TAPE */
-.tape{background:linear-gradient(180deg,var(--deep) 0%,var(--deep2) 100%)}
+.clock{display:flex;gap:clamp(10px,2.6vw,34px)}
+.clock div{text-align:center;perspective:300px}
+.clock strong{display:block;font:900 clamp(32px,5vw,56px)/1 Montserrat;font-variant-numeric:tabular-nums;color:var(--red);background:#fff;border-radius:6px;padding:6px 10px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.08),0 6px 14px rgba(120,0,0,.12)}
+.clock strong.flip{animation:flip .45s ease-out}
+@keyframes flip{0%{transform:rotateX(-80deg);opacity:.2}100%{transform:none;opacity:1}}
+.clock small{display:block;margin-top:6px;font:700 12px Montserrat;text-transform:uppercase;letter-spacing:.1em}
+/* ---------- TALE OF THE TAPE ---------- */
 .faceoff{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,1fr);gap:clamp(14px,3vw,40px);align-items:end}
-.corner{position:relative;border-radius:6px;overflow:hidden;background:var(--red2)}
-.corner img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;transition:transform .6s}
-.corner:hover img{transform:scale(1.04)}
-.corner figcaption{position:absolute;inset:auto 0 0;padding:60px 18px 16px;background:linear-gradient(transparent,rgba(22,1,1,.95))}
+.corner{position:relative;border-radius:6px;overflow:hidden;background:var(--red2);margin:0;box-shadow:0 30px 60px rgba(0,0,0,.55);transform-style:preserve-3d}
+.corner img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.corner:hover img{transform:scale(1.07)}
+.corner::after{content:"";position:absolute;inset:0;background:url(grunge.png) 0 0/300px;mix-blend-mode:multiply;opacity:.5;pointer-events:none}
+.corner figcaption{position:absolute;inset:auto 0 0;z-index:2;padding:70px 18px 16px;background:linear-gradient(transparent,rgba(20,1,1,.95))}
 .corner h3{margin:0;font:900 clamp(20px,2.4vw,28px)/1.05 Montserrat;text-transform:uppercase}
 .corner p{margin:4px 0 0;color:var(--mute);font-weight:700}
 .stats{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 .stats td{padding:12px 6px;border-bottom:1px solid var(--line);font:800 17px Montserrat;white-space:nowrap}
 .stats td:first-child{text-align:right}.stats td:last-child{text-align:left}
 .stats td:nth-child(2){text-align:center;font:700 12px Montserrat;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;width:40%}
-.vs{font:italic 900 clamp(48px,7vw,90px)/1 Montserrat;text-align:center;background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.vs{font:italic 900 clamp(56px,8vw,110px)/1 Montserrat;text-align:center;background:url(metal.jpg) center/cover;-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px;filter:drop-shadow(0 4px 0 #5a0000) drop-shadow(0 0 30px rgba(255,40,20,.45))}
 @media(max-width:760px){.faceoff{grid-template-columns:1fr 1fr}.faceoff .mid{grid-column:1/-1;order:3}}
-/* CARD */
-.card{background:var(--red);background-image:linear-gradient(160deg,#e00505 0%,#a80202 100%)}
+/* ---------- CARD ---------- */
+.card h2{filter:drop-shadow(0 3px 0 #4a0000) drop-shadow(0 10px 18px rgba(0,0,0,.35))}
 .bouts{list-style:none;margin:0;padding:0;border-top:2px solid rgba(255,255,255,.35)}
-.bouts li{display:grid;grid-template-columns:9em minmax(0,1fr) auto;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.25)}
+.bouts li{position:relative;display:grid;grid-template-columns:9em minmax(0,1fr) auto;gap:16px;align-items:center;padding:20px 12px;border-bottom:1px solid rgba(255,255,255,.25);isolation:isolate}
+.bouts li::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(20,1,1,.55);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.bouts li:hover::before{transform:scaleX(1)}
 .bouts .lbl{font:800 13px Montserrat;text-transform:uppercase;letter-spacing:.08em;opacity:.85}
 .bouts .names{font:900 clamp(18px,2.4vw,28px)/1.15 Montserrat;text-transform:uppercase}
 .bouts .names em{font-style:normal;opacity:.6;margin:0 .4em}
 .bouts .div{font:700 14px Montserrat;white-space:nowrap;opacity:.9}
-.bouts li.main .names{font-size:clamp(22px,3.4vw,38px)}
+.bouts li.main .names{font-size:clamp(22px,3.4vw,40px)}
 @media(max-width:640px){.bouts li{grid-template-columns:1fr;gap:4px}}
-/* FIGHT WEEK */
-.sched{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:0;border-top:1px solid var(--line)}
-.sched article{padding:26px 22px 26px 0;border-bottom:1px solid var(--line)}
-.sched time{display:block;font:900 clamp(26px,3vw,36px)/1 Montserrat;color:#ff3b2f}
+/* ---------- FIGHT WEEK ---------- */
+.sched{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));border-top:1px solid var(--line)}
+.sched article{position:relative;padding:28px 22px 28px 0;border-bottom:1px solid var(--line)}
+.sched article::before{content:"";position:absolute;left:0;top:-1px;height:3px;width:0;background:var(--red);transition:width .6s}
+.sched article:hover::before{width:60%}
+.sched time{display:block;font:900 clamp(28px,3.2vw,40px)/1 Montserrat;color:#ff3b2f;text-shadow:0 0 24px rgba(255,40,20,.35)}
 .sched .day{font:700 14px Montserrat;color:var(--mute);margin:6px 0 12px}
 .sched h3{margin:0 0 6px;font:800 19px Montserrat;text-transform:uppercase}
 .sched p{margin:0;color:var(--mute)}
-/* TICKETS */
-.tix{background:var(--deep2)}
-.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px}
-.tier{border:1px solid var(--line);border-radius:6px;padding:26px;display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.02)}
-.tier.hot{background:var(--red);border-color:var(--red);box-shadow:0 20px 50px rgba(209,2,2,.35)}
+/* ---------- TICKETS ---------- */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;perspective:1200px}
+.tier{position:relative;border:1px solid var(--line);border-radius:6px;padding:26px;display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.03);transition:transform .25s ease-out,box-shadow .3s;transform-style:preserve-3d;overflow:hidden}
+.tier::after{content:"";position:absolute;inset:0;background:url(grunge.png) 0 0/360px;mix-blend-mode:multiply;opacity:.35;pointer-events:none}
+.tier>*{position:relative;z-index:1}
+.tier.hot{background:var(--red);border-color:var(--red);box-shadow:0 24px 60px rgba(209,2,2,.4)}
+.tier .badge{position:absolute;top:22px;right:-46px;rotate:40deg;background:#fff;color:var(--red2);font:900 10px Montserrat;letter-spacing:.08em;padding:5px 50px;text-transform:uppercase}
 .tier h3{margin:0;font:900 22px Montserrat;text-transform:uppercase}
-.price{font:900 clamp(30px,3.6vw,40px)/1 Montserrat;white-space:nowrap}
+.price{font:900 clamp(30px,3.6vw,42px)/1 Montserrat;white-space:nowrap}
 .tier ul{margin:4px 0 10px;padding-left:18px;color:var(--mute)}.tier.hot ul{color:#ffe2dd}
 .qty{display:flex;align-items:center;gap:10px;margin-top:auto}
-.qty button{width:44px;height:44px;border-radius:4px;border:2px solid currentColor;background:transparent;color:inherit;font:800 20px Montserrat;cursor:pointer}
+.qty button{width:44px;height:44px;border-radius:4px;border:2px solid currentColor;background:transparent;color:inherit;font:800 20px Montserrat;cursor:pointer;transition:background .2s,color .2s,transform .1s}
+.qty button:hover{background:#fff;color:var(--red2)}.qty button:active{transform:scale(.92)}
 .qty output{min-width:2ch;text-align:center;font:900 22px Montserrat}
-.summary{margin-top:26px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:22px 26px;border-radius:6px;background:#fff;color:var(--deep)}
-.summary strong{font:900 clamp(24px,3vw,32px) Montserrat;color:var(--red);white-space:nowrap}
+.summary{position:relative;margin-top:26px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:22px 26px;border-radius:6px;background:#f6efed;color:var(--deep);overflow:hidden}
+.summary::before{content:"";position:absolute;inset:0;background:url(grunge.png) 0 0/420px;opacity:.3;pointer-events:none}
+.summary>*{position:relative}
+.summary strong{font:900 clamp(24px,3vw,34px) Montserrat;color:var(--red);white-space:nowrap}
 .summary .btn.solid{background:var(--red);color:#fff}
 .msg{margin:14px 0 0;font-weight:700;min-height:1.6em}
-/* PARTNERS + SHARE */
-.partners{background:linear-gradient(180deg,#a80202,#d10202);text-align:center}
-.partners img{margin:10px auto 0;width:min(100%,860px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
-.partners{background:#b30202}
-.share{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(24px,5vw,70px);align-items:center}
-.share .poster{border-radius:6px;box-shadow:0 30px 60px rgba(0,0,0,.6);transform:rotate(-3deg)}
-.hash{font:italic 900 clamp(32px,6vw,64px)/1 Montserrat;margin:6px 0 18px;word-break:break-word}
+/* ---------- PARTNERS / SHARE / FAQ ---------- */
+.partners{text-align:center;background:linear-gradient(180deg,#a30202,#c90303)}
+.partners h2{font-size:clamp(26px,3vw,36px)}
+.plogos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(10px,1.6vw,18px)}
+.plogo{position:relative;aspect-ratio:1;display:grid;place-items:center;padding:clamp(12px,1.8vw,22px);background:#fbf7f6;border-radius:8px;box-shadow:0 14px 30px rgba(60,0,0,.35),inset 0 -4px 0 rgba(0,0,0,.06);overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.plogo::before{content:"";position:absolute;inset:0;background:url(grunge.png) 0 0/300px;opacity:.18;pointer-events:none}
+.plogo::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.8) 50%,transparent 60%);transform:translateX(-120%);transition:transform .7s;pointer-events:none}
+.plogo:hover{transform:translateY(-8px) rotate(-1.5deg);box-shadow:0 24px 44px rgba(40,0,0,.5)}
+.plogo:hover::after{transform:translateX(120%)}
+.plogo img{position:relative;width:100%;height:100%;object-fit:contain}
+@media(max-width:900px){.plogos{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:520px){.plogos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.share{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center}
+.share .poster{border-radius:6px;box-shadow:0 40px 80px rgba(0,0,0,.65),0 0 0 6px rgba(255,255,255,.06);rotate:-4deg}
+.hash{font:italic 900 clamp(32px,6vw,68px)/1 Montserrat;margin:6px 0 18px;word-break:break-word;background:url(metal.jpg) center/cover;-webkit-background-clip:text;background-clip:text;color:transparent}
 @media(max-width:700px){.share{grid-template-columns:1fr}.share .poster{max-width:260px;margin:0 auto}}
 details{border-bottom:1px solid var(--line);padding:16px 0}
-summary{cursor:pointer;font:800 17px Montserrat;list-style-position:outside}
+summary{cursor:pointer;font:800 17px Montserrat;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;line-height:1;color:#ff3b2f;transition:rotate .3s}
+details[open] summary::after{rotate:45deg}
 details p{margin:10px 0 0;color:var(--mute)}
-footer{padding:40px max(5vw,16px);border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+footer{position:relative;padding:40px max(5vw,16px);border-top:1px solid var(--line);font-size:14px;color:var(--mute);background:#0c0000}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:44px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.className=matchMedia('(prefers-reduced-motion: reduce)').matches?'reduced':'motion'</script>
+<div class="pre" id="pre" aria-hidden="true"><i></i><i></i><img src="logo.png" alt=""><b></b></div>
+
 <nav id="nav" aria-label="Main">
-  <a class="brand" href="#top">Balmoral Group<br>Promotions</a>
+  <a class="brand" href="#top" aria-label="Balmoral Group Promotions, back to top"><img src="logo.png" alt="" width="181" height="158"><span>Balmoral Group<br>Promotions</span></a>
   <div class="links"><a href="#tape">Main event</a><a href="#card">Fight card</a><a href="#week">Fight week</a><a href="#tickets">Tickets</a><a href="#faq">Info</a></div>
-  <a class="btn solid" href="#tickets">Get tickets</a>
+  <a class="btn solid mag" href="#tickets">Get tickets</a>
 </nav>
 
 <header class="hero" id="top">
-  <p class="presents">Balmoral Group Promotions presents</p>
+  <div class="backdrop" aria-hidden="true"></div>
+  <img class="hero-logo" src="logo.png" alt="Balmoral Group Promotions logo" width="181" height="158">
   <div class="stage" aria-hidden="true">
     <img class="half l" src="left.jpg" alt="">
     <img class="half r" src="right.jpg" alt="">
   </div>
   <div class="rope a" aria-hidden="true"></div>
   <div class="rope b" aria-hidden="true"></div>
+  <canvas id="sparks" aria-hidden="true"></canvas>
   <div class="titleblock">
-    <h1 style="margin:0"><img src="title.webp" alt="Chaos in the Ring" width="860" height="370"></h1>
+    <h1><img src="title.webp" alt="Chaos in the Ring" width="1400" height="574"></h1>
     <p class="tag">Where glory meets chaos</p>
-    <p class="when"><span id="heroDate" style="opacity:1;margin:0"></span><span>•</span><span id="heroVenue" style="opacity:1;margin:0"></span></p>
-    <div class="ctas"><a class="btn solid" href="#tickets">Get tickets</a><a class="btn ghost" href="#card">See the fight card</a></div>
+    <p class="when"><span id="heroDate"></span><i>•</i><span id="heroVenue"></span></p>
+    <div class="ctas"><a class="btn solid mag" href="#tickets">Get tickets</a><a class="btn ghostb mag" href="#card">See the fight card</a></div>
   </div>
+  <div class="flash" aria-hidden="true"></div>
 </header>
+
+<div class="tickwrap" aria-hidden="true"><div class="ticker"><div class="track" id="track"></div></div></div>
 
 <section class="count" aria-label="Countdown to fight night">
   <div class="wrap">
     <b id="countLabel">Fight night in</b>
-    <div class="clock" id="clock" aria-live="off">
+    <div class="clock">
       <div><strong id="cd-d">00</strong><small>Days</small></div>
       <div><strong id="cd-h">00</strong><small>Hours</small></div>
       <div><strong id="cd-m">00</strong><small>Mins</small></div>
@@ -181,85 +242,110 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
-<section class="band tape" id="tape">
+<section class="band spot dust" id="tape">
+  <div class="ghost" data-drift="-1" aria-hidden="true">Main event</div>
   <div class="wrap">
-    <h2 class="reveal">Main event</h2>
-    <p class="lede reveal">Two heavyweights, one ring, no way out. The bout the whole of Lagos has been arguing about finally gets settled under the lights.</p>
+    <h2 class="rv">Main event</h2>
+    <p class="lede up">Two heavyweights, one ring, no way out. The bout the whole of Lagos has been arguing about finally gets settled under the lights.</p>
     <div class="faceoff">
-      <figure class="corner reveal" style="margin:0"><img src="left.jpg" alt="The red-corner fighter in a fighting stance"><figcaption><h3 id="f1name"></h3><p id="f1nick"></p></figcaption></figure>
-      <div class="mid reveal">
+      <figure class="corner c1"><img src="left.jpg" alt="The red-corner fighter in a fighting stance"><figcaption><h3 id="f1name"></h3><p id="f1nick"></p></figcaption></figure>
+      <div class="mid">
         <div class="vs">VS</div>
         <table class="stats" aria-label="Tale of the tape"><tbody id="tapeRows"></tbody></table>
       </div>
-      <figure class="corner reveal" style="margin:0"><img src="right.jpg" alt="The blue-corner fighter staring down his opponent"><figcaption><h3 id="f2name"></h3><p id="f2nick"></p></figcaption></figure>
+      <figure class="corner c2"><img src="right.jpg" alt="The blue-corner fighter staring down his opponent"><figcaption><h3 id="f2name"></h3><p id="f2nick"></p></figcaption></figure>
     </div>
     <p class="note">Fighter names, records, card, schedule, prices and venue are sample details — swap in the confirmed ones in the settings block at the bottom of this page.</p>
   </div>
 </section>
 
-<section class="band card" id="card">
+<section class="band card halftone tex" id="card">
+  <div class="rope-div top" aria-hidden="true"></div>
+  <div class="ghost" data-drift="1" aria-hidden="true">Knockout</div>
   <div class="wrap">
-    <h2 class="reveal">The fight card</h2>
-    <p class="lede reveal" style="color:#ffe2dd">Every bout on the night, from the first bell of the undercard to the main event walkout.</p>
+    <h2 class="rv">The fight card</h2>
+    <p class="lede up" style="color:#ffe2dd">Every bout on the night, from the first bell of the undercard to the main event walkout.</p>
     <ol class="bouts" id="bouts"></ol>
   </div>
+  <div class="rope-div bot" aria-hidden="true"></div>
 </section>
 
-<section class="band" id="week">
+<section class="band spot dust" id="week">
+  <div class="ghost" data-drift="-1" aria-hidden="true">Fight week</div>
   <div class="wrap">
-    <h2 class="reveal">Fight week</h2>
-    <p class="lede reveal">Get close before the chaos. Fans are welcome at every public fight-week event.</p>
+    <h2 class="rv">Fight week</h2>
+    <p class="lede up">Get close before the chaos. Fans are welcome at every public fight-week event.</p>
     <div class="sched" id="sched"></div>
   </div>
 </section>
 
-<section class="band tix" id="tickets">
+<section class="band spot dust" id="tickets" style="background:radial-gradient(60% 50% at 50% 0%,rgba(209,2,2,.32),transparent 70%),var(--deep2)">
+  <div class="ghost" data-drift="1" aria-hidden="true">Ringside</div>
   <div class="wrap">
-    <h2 class="reveal">Tickets</h2>
-    <p class="lede reveal">Pick your seats and how many. Ringside tables seat four and sell out first.</p>
+    <h2 class="rv">Tickets</h2>
+    <p class="lede up">Pick your seats and how many. Ringside tables seat four and sell out first.</p>
     <div class="tiers" id="tiers"></div>
-    <div class="summary" role="region" aria-label="Order summary">
+    <div class="summary up" role="region" aria-label="Order summary">
       <div><div id="sumText" style="font-weight:700">No tickets selected</div><strong id="sumTotal">₦0</strong></div>
-      <button class="btn solid" id="checkout" type="button">Continue to checkout</button>
+      <button class="btn solid mag" id="checkout" type="button">Continue to checkout</button>
     </div>
     <p class="msg" id="msg" role="status"></p>
   </div>
 </section>
 
-<section class="band partners" aria-labelledby="ph">
+<section class="band partners tex" id="partners" aria-labelledby="ph">
+  <div class="rope-div top" aria-hidden="true"></div>
+  <div class="ghost" data-drift="1" aria-hidden="true">Partners</div>
   <div class="wrap">
-    <h2 id="ph" class="reveal" style="font-size:clamp(24px,3vw,32px)">Our partners</h2>
-    <img class="reveal" src="sponsors.png" alt="Partners: Fight Group Media, Lagos State, Pepsi, Super Kombat360, Medics Futures, Nigeria Boxing Federation">
+    <h2 id="ph" class="rv">Our partners</h2>
+    <p class="lede up" style="color:#ffe2dd;margin-inline:auto">The brands and institutions in our corner for Chaos in the Ring.</p>
+    <ul class="plogos">
+      <li class="plogo"><img src="partners/fgm.webp" alt="Fight Group Media (FGM)" loading="lazy"></li>
+      <li class="plogo"><img src="partners/lagos-tourism.webp" alt="Lagos State Tourism" loading="lazy"></li>
+      <li class="plogo"><img src="partners/pepsi.webp" alt="Pepsi" loading="lazy"></li>
+      <li class="plogo"><img src="partners/supa-komando.webp" alt="Supa Komando Energy Drink" loading="lazy"></li>
+      <li class="plogo"><img src="partners/medics-partners.webp" alt="Medics Partners" loading="lazy"></li>
+      <li class="plogo"><img src="partners/boxing-emblem.webp" alt="Boxing federation emblem" loading="lazy"></li>
+      <li class="plogo"><img src="partners/ibo.webp" alt="IBO" loading="lazy"></li>
+      <li class="plogo"><img src="partners/lagos-multicolor.webp" alt="Lagos State emblem" loading="lazy"></li>
+      <li class="plogo"><img src="partners/lagos-green.webp" alt="Lagos State agency emblem" loading="lazy"></li>
+      <li class="plogo"><img src="partners/lagos-blue.webp" alt="Lagos State Government seal" loading="lazy"></li>
+      <li class="plogo"><img src="partners/orange-emblem.webp" alt="Partner emblem" loading="lazy"></li>
+      <li class="plogo"><img src="partners/gold-emblem.webp" alt="Partner emblem" loading="lazy"></li>
+    </ul>
   </div>
 </section>
 
-<section class="band">
+<section class="band spot dust">
+  <div class="ghost" data-drift="-1" aria-hidden="true">Glory</div>
   <div class="wrap share">
-    <img class="poster reveal" src="poster.jpg" alt="Official Chaos in the Ring poster">
-    <div class="reveal">
-      <h2>Spread the chaos</h2>
-      <p class="lede" style="margin-bottom:8px">Post the poster, tag your crew and use the official hashtag.</p>
-      <p class="hash" id="hash">#ChaosInTheRing</p>
-      <button class="btn solid" id="copyHash" type="button">Copy hashtag</button>
+    <img class="poster" id="poster" src="poster.jpg" alt="Official Chaos in the Ring poster">
+    <div>
+      <h2 class="rv">Spread the chaos</h2>
+      <p class="lede up" style="margin-bottom:8px">Post the poster, tag your crew and use the official hashtag.</p>
+      <p class="hash up">#ChaosInTheRing</p>
+      <button class="btn solid mag up" id="copyHash" type="button">Copy hashtag</button>
       <p class="msg" id="copyMsg" role="status"></p>
     </div>
   </div>
 </section>
 
-<section class="band tix" id="faq">
+<section class="band dust" id="faq" style="background:var(--deep2)">
   <div class="wrap" style="max-width:820px">
-    <h2 class="reveal">Fight night info</h2>
+    <h2 class="rv">Fight night info</h2>
     <div id="faqList"></div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Balmoral Group Promotions. Chaos in the Ring.</span>
+    <span class="flogo"><img src="logo.png" alt="Balmoral Group Promotions logo" width="181" height="158"><span>© 2026 Balmoral Group Promotions. Chaos in the Ring.</span></span>
     <span>Media &amp; sponsorship: <span id="contact"></span></span>
   </div>
 </footer>
 
+<script src="gsap.min.js"></script>
+<script src="ScrollTrigger.min.js"></script>
 <script>
 {
 /* ======= SETTINGS — edit these to update the whole site ======= */
@@ -300,7 +386,7 @@ const CONFIG = {
 /* ============================================================== */
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const naira=n=>'₦'+n.toLocaleString('en-NG');
+const naira=n=>'₦'+Math.round(n).toLocaleString('en-NG');
 const ev=new Date(CONFIG.eventDate);
 $('heroDate').textContent=ev.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'long',year:'numeric',timeZone:'Africa/Lagos'});
 $('heroVenue').textContent=CONFIG.venueLabel;
@@ -310,16 +396,21 @@ $('f1name').textContent=f1.name;$('f1nick').textContent=f1.nick;
 $('f2name').textContent=f2.name;$('f2nick').textContent=f2.nick;
 const rows=[['record','Record'],['ko','KOs'],['age','Age'],['height','Height'],['reach','Reach'],['stance','Stance']];
 $('tapeRows').innerHTML=rows.map(([k,l])=>`<tr><td>${esc(f1[k])}</td><td>${l}</td><td>${esc(f2[k])}</td></tr>`).join('');
-$('bouts').innerHTML=CONFIG.bouts.map(b=>`<li class="reveal${b.main?' main':''}"><span class="lbl">${esc(b.lbl)}</span><span class="names">${esc(b.a)}<em>vs</em>${esc(b.b)}</span><span class="div">${esc(b.div)}</span></li>`).join('');
-$('sched').innerHTML=CONFIG.week.map(w=>`<article class="reveal"><time>${esc(w.time)}</time><div class="day">${esc(w.day)}</div><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></article>`).join('');
+$('bouts').innerHTML=CONFIG.bouts.map(b=>`<li class="${b.main?'main':''}"><span class="lbl">${esc(b.lbl)}</span><span class="names">${esc(b.a)}<em>vs</em>${esc(b.b)}</span><span class="div">${esc(b.div)}</span></li>`).join('');
+$('sched').innerHTML=CONFIG.week.map(w=>`<article><time>${esc(w.time)}</time><div class="day">${esc(w.day)}</div><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></article>`).join('');
 $('faqList').innerHTML=CONFIG.faq.map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('');
+const words=['Chaos in the Ring','Where glory meets chaos','Balmoral Group Promotions','Fight night Lagos'];
+$('track').innerHTML=[...words,...words,...words,...words].map(w=>`<span>${esc(w)} ✦</span>`).join('');
 
 /* tickets */
 const qty={};CONFIG.tiers.forEach(t=>qty[t.id]=0);
-$('tiers').innerHTML=CONFIG.tiers.map(t=>`<article class="tier reveal${t.hot?' hot':''}"><h3>${esc(t.name)}</h3><div class="price">${naira(t.price)}</div><ul>${t.perks.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
+$('tiers').innerHTML=CONFIG.tiers.map(t=>`<article class="tier${t.hot?' hot':''}">${t.hot?'<span class="badge">Most popular</span>':''}<h3>${esc(t.name)}</h3><div class="price">${naira(t.price)}</div><ul>${t.perks.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
 <div class="qty"><button type="button" data-id="${t.id}" data-d="-1" aria-label="Remove one ${esc(t.name)} ticket">−</button><output id="q-${t.id}" aria-live="polite">0</output><button type="button" data-id="${t.id}" data-d="1" aria-label="Add one ${esc(t.name)} ticket">+</button></div></article>`).join('');
+let shownTotal=0;
 const render=()=>{let n=0,tot=0;const parts=[];CONFIG.tiers.forEach(t=>{const q=qty[t.id];$('q-'+t.id).textContent=q;if(q){n+=q;tot+=q*t.price;parts.push(q+' × '+t.name)}});
-  $('sumText').textContent=n?parts.join(', '):'No tickets selected';$('sumTotal').textContent=naira(tot);$('msg').textContent='';};
+  $('sumText').textContent=n?parts.join(', '):'No tickets selected';$('msg').textContent='';
+  if(window.gsap&&!reduced){const o={v:shownTotal};gsap.to(o,{v:tot,duration:.5,ease:'power2.out',onUpdate:()=>$('sumTotal').textContent=naira(o.v)})}else $('sumTotal').textContent=naira(tot);
+  shownTotal=tot;};
 $('tiers').addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(!b)return;const id=b.dataset.id;qty[id]=Math.max(0,Math.min(10,qty[id]+Number(b.dataset.d)));render();});
 $('checkout').addEventListener('click',()=>{
   const n=Object.values(qty).reduce((a,b)=>a+b,0);
@@ -327,30 +418,98 @@ $('checkout').addEventListener('click',()=>{
   if(CONFIG.ticketUrl){location.href=CONFIG.ticketUrl;return;}
   $('msg').textContent='Ticket sales open soon. Follow #ChaosInTheRing for the on-sale announcement.';
 });
-render();
 
-/* countdown */
+/* countdown with flip */
 const pad=n=>String(n).padStart(2,'0');
+const setD=(id,v)=>{const el=$(id);if(el.textContent!==v){el.textContent=v;el.classList.remove('flip');void el.offsetWidth;el.classList.add('flip')}};
 const tick=()=>{let ms=ev-Date.now();
   if(ms<=0){$('countLabel').textContent='Fight night is here';ms=0;}
-  const s=Math.floor(ms/1000);$('cd-d').textContent=pad(Math.floor(s/86400));$('cd-h').textContent=pad(Math.floor(s/3600)%24);$('cd-m').textContent=pad(Math.floor(s/60)%60);$('cd-s').textContent=pad(s%60);};
+  const s=Math.floor(ms/1000);setD('cd-d',pad(Math.floor(s/86400)));setD('cd-h',pad(Math.floor(s/3600)%24));setD('cd-m',pad(Math.floor(s/60)%60));setD('cd-s',pad(s%60));};
 tick();const timer=setInterval(tick,1000);
 
 /* copy hashtag */
 $('copyHash').addEventListener('click',async()=>{try{await navigator.clipboard.writeText('#ChaosInTheRing');$('copyMsg').textContent='Copied — now go post it.';}catch(e){$('copyMsg').textContent='Copy blocked here — select the hashtag above instead.';}});
 
-/* nav background */
+/* nav */
 const nav=$('nav');const onScroll=()=>nav.classList.toggle('solid',scrollY>40);addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-/* hero load + reveals */
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.add('go')));
-const io=('IntersectionObserver' in window)&&!reduce?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15}):null;
-document.querySelectorAll('.reveal').forEach((el,i)=>{if(io){el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)}else el.classList.add('in')});
+const reduced=document.documentElement.classList.contains('reduced');
+const fine=matchMedia('(pointer:fine)').matches;
+render();
 
-/* ropes drift with scroll */
-if(!reduce){const ra=document.querySelector('.rope.a'),rb=document.querySelector('.rope.b');
-  addEventListener('scroll',()=>{const y=Math.min(scrollY,900);ra.style.transform=`translateY(${y*-.25}px) rotate(-14deg)`;rb.style.transform=`translateY(${y*-.12}px) rotate(-14deg)`},{passive:true});}
+/* sparks */
+const cv=$('sparks'),ctx=cv.getContext('2d');let parts=[],running=false,raf=0;
+const sizeCv=()=>{const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=r.width*d;cv.height=r.height*d;ctx.setTransform(d,0,0,d,0,0)};
+const spawn=()=>({x:Math.random()*cv.clientWidth,y:cv.clientHeight+10,vx:(Math.random()-.5)*.6,vy:-(.6+Math.random()*1.6),r:.6+Math.random()*1.8,life:0,max:180+Math.random()*200});
+const loop=()=>{ctx.clearRect(0,0,cv.clientWidth,cv.clientHeight);if(parts.length<70)parts.push(spawn());
+  parts=parts.filter(p=>{p.life++;p.x+=p.vx+Math.sin(p.life/20)*.3;p.y+=p.vy;const a=Math.max(0,1-p.life/p.max);
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fillStyle=`rgba(255,${120+Math.random()*80|0},60,${a})`;ctx.shadowColor='#ff4020';ctx.shadowBlur=8;ctx.fill();return p.life<p.max&&p.y>-10});
+  raf=requestAnimationFrame(loop)};
+if(!reduced){sizeCv();addEventListener('resize',sizeCv);
+  const sio=new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!running){running=true;loop()}else if(!v&&running){running=false;cancelAnimationFrame(raf)}});sio.observe(cv);}
+
+/* magnetic buttons + tilt */
+if(fine&&!reduced){
+  document.querySelectorAll('.mag').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.28}px)`});b.addEventListener('pointerleave',()=>b.style.transform='')});
+  document.querySelectorAll('.tier,.corner').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg) translateZ(0)`});c.addEventListener('pointerleave',()=>c.style.transform='')});
+}
+
+/* ---------- GSAP choreography ---------- */
+const pre=$('pre');
+if(window.gsap&&!reduced){
+  gsap.registerPlugin(ScrollTrigger);
+  const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.from('.pre img',{scale:.4,opacity:0,duration:.5,ease:'back.out(2)'})
+    .to('.pre img,.pre b',{opacity:0,scale:1.3,duration:.3},'+=.45')
+    .to('.pre i:first-child',{yPercent:-100,duration:.7,ease:'power4.inOut'},'<')
+    .to('.pre i:nth-child(2)',{yPercent:100,duration:.7,ease:'power4.inOut'},'<')
+    .set(pre,{display:'none'})
+    .from('.backdrop',{scale:1.4,opacity:0,duration:1.4},'-=.7')
+    .from('.half.l',{xPercent:-60,opacity:0,duration:1.1,ease:'power4.out'},'-=1.2')
+    .from('.half.r',{xPercent:60,opacity:0,duration:1.1,ease:'power4.out'},'<')
+    .from('.rope.a',{xPercent:-100,duration:.9,ease:'power4.out'},'-=.9')
+    .from('.rope.b',{xPercent:100,duration:.9,ease:'power4.out'},'<.1')
+    .from('.hero-logo',{y:-30,opacity:0,duration:.6},'-=.6')
+    .from('.titleblock h1 img',{scale:2.6,opacity:0,duration:.42,ease:'power4.in'},'-=.3')
+    .to('.flash',{opacity:.55,duration:.06,yoyo:true,repeat:1})
+    .fromTo('.titleblock',{x:-10,y:6},{x:0,y:0,duration:.5,ease:'elastic.out(1.2,.25)'},'<')
+    .fromTo('.stage',{y:8},{y:0,duration:.5,ease:'elastic.out(1.2,.25)'},'<')
+    .from('.tag',{y:24,opacity:0,duration:.5},'-=.25')
+    .from('.when',{y:20,opacity:0,duration:.5},'-=.35')
+    .from('.ctas .btn',{y:20,opacity:0,stagger:.1,duration:.5},'-=.35')
+    .from('nav',{opacity:0,duration:.5},'-=.3');
+  /* hero scroll parallax */
+  const hs={trigger:'.hero',start:'top top',end:'bottom top',scrub:.6};
+  gsap.to('.half.l',{xPercent:-12,scrollTrigger:hs});gsap.to('.half.r',{xPercent:12,scrollTrigger:hs});
+  gsap.to('.titleblock',{yPercent:30,scale:.92,opacity:.2,scrollTrigger:hs});
+  gsap.to('.rope.a',{y:-120,scrollTrigger:hs});gsap.to('.rope.b',{y:-60,scrollTrigger:hs});
+  gsap.to('.backdrop',{yPercent:12,scrollTrigger:hs});
+  /* ticker reacts to scroll speed */
+  const marq=gsap.to('#track',{xPercent:-50,duration:30,ease:'none',repeat:-1});$('track').style.animation='none';
+  ScrollTrigger.create({onUpdate:s=>{const v=s.getVelocity()/300;gsap.to(marq,{timeScale:(s.direction<0?-1:1)*Math.max(1,Math.min(6,Math.abs(v))),duration:.3,overwrite:true,onComplete:()=>gsap.to(marq,{timeScale:s.direction<0?-1:1,duration:1})})}});
+  /* headings: metal wipe */
+  gsap.utils.toArray('.rv').forEach(h=>gsap.fromTo(h,{clipPath:'inset(0 100% 0 0)',x:-30,skewX:-12},{clipPath:'inset(0 0% 0 0)',x:0,skewX:0,duration:.9,ease:'power4.out',scrollTrigger:{trigger:h,start:'top 88%'}}));
+  gsap.utils.toArray('.up').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:.8,scrollTrigger:{trigger:el,start:'top 90%'}}));
+  gsap.utils.toArray('.ghost').forEach(g=>gsap.fromTo(g,{xPercent:g.dataset.drift>0?-18:8},{xPercent:g.dataset.drift>0?6:-20,ease:'none',scrollTrigger:{trigger:g.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
+  /* face-off */
+  const fo={trigger:'.faceoff',start:'top 80%'};
+  gsap.from('.c1',{x:-160,rotate:-8,opacity:0,duration:1,ease:'power4.out',scrollTrigger:fo});
+  gsap.from('.c2',{x:160,rotate:8,opacity:0,duration:1,ease:'power4.out',scrollTrigger:fo});
+  gsap.from('.vs',{scale:3,opacity:0,duration:.5,delay:.6,ease:'power4.in',scrollTrigger:fo,onComplete:()=>gsap.fromTo('.faceoff',{x:-8},{x:0,duration:.5,ease:'elastic.out(1.2,.2)'})});
+  gsap.from('.stats tr',{opacity:0,y:14,stagger:.08,duration:.5,delay:.9,scrollTrigger:fo});
+  /* card rows */
+  gsap.from('.bouts li',{x:-80,opacity:0,stagger:.12,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.bouts',start:'top 82%'}});
+  /* fight week */
+  gsap.from('.sched article',{y:50,opacity:0,stagger:.12,duration:.7,scrollTrigger:{trigger:'.sched',start:'top 85%'}});
+  /* tickets */
+  gsap.from('.tier',{y:80,rotateX:-25,opacity:0,stagger:.14,duration:.9,ease:'power4.out',scrollTrigger:{trigger:'.tiers',start:'top 85%'}});
+  /* poster */
+  gsap.fromTo('#poster',{y:80,rotate:-10},{y:-40,rotate:3,ease:'none',scrollTrigger:{trigger:'#poster',start:'top bottom',end:'bottom top',scrub:true}});
+  /* rope dividers parallax */
+  gsap.utils.toArray('.rope-div').forEach(r=>gsap.fromTo(r,{xPercent:-4},{xPercent:4,ease:'none',scrollTrigger:{trigger:r.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
+  gsap.from('.plogo',{y:60,scale:.7,rotate:()=>gsap.utils.random(-12,12),opacity:0,stagger:{each:.06,from:'center'},duration:.7,ease:'back.out(1.8)',scrollTrigger:{trigger:'.plogos',start:'top 88%'}});
+  gsap.from('#faqList details',{y:24,opacity:0,stagger:.08,duration:.6,scrollTrigger:{trigger:'#faqList',start:'top 88%'}});
+}else{pre.style.display='none'}
 }
 </script>
 </body>
