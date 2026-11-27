@@ -72,7 +72,7 @@ nav .btn{min-height:44px;padding:0 18px;font-size:13px}
 @media(max-width:860px){.links{display:none}}
 @media(max-width:480px){.brand span{display:none}}
 /* ---------- HERO ---------- */
-.hero{--sw:min(calc(100vw - 32px),1100px,calc((100svh - 320px) * 1.15));position:relative;min-height:min(100svh,1100px);padding:84px 16px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;background:#7a0101}
+.hero{--sw:min(calc(100vw - 32px),1100px,calc((100svh - 230px) * 1.15));position:relative;min-height:min(100svh,1100px);padding:84px 16px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;background:#7a0101}
 .backdrop{position:absolute;inset:-6%;z-index:-4;background:url(hero-bg.jpg) center/cover}
 .hero::before{content:"";position:absolute;inset:0;z-index:-3;background:
  conic-gradient(from 168deg at 30% -8%,transparent 0deg,rgba(255,190,170,.16) 6deg,transparent 14deg),
@@ -175,13 +175,13 @@ nav .btn{min-height:44px;padding:0 18px;font-size:13px}
 .partners{text-align:center;background:linear-gradient(180deg,#a30202,#c90303)}
 .partners h2{font-size:clamp(26px,3vw,36px)}
 .carousel{position:relative;margin:10px calc(50% - 50vw) 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.plogos{list-style:none;margin:0;padding:18px 0 26px;display:flex;gap:clamp(14px,2vw,24px);width:max-content;animation:belt 40s linear infinite}
+.plogos{list-style:none;margin:0;padding:18px 0 26px;display:flex;gap:clamp(14px,2vw,24px);width:max-content;animation:belt 30s linear infinite}
 .carousel:hover .plogos,.carousel:focus-within .plogos{animation-play-state:paused}
 @keyframes belt{to{transform:translateX(calc(-50% - clamp(14px,2vw,24px) / 2))}}
 .plogo{position:relative;flex:none;width:clamp(130px,14vw,190px);aspect-ratio:1;display:grid;place-items:center;padding:clamp(14px,1.8vw,24px);background:#fbf7f6;border-radius:10px;box-shadow:0 14px 30px rgba(60,0,0,.35),inset 0 -4px 0 rgba(0,0,0,.06);overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
 .plogo::before{content:"";position:absolute;inset:0;background:url(grunge.png) 0 0/300px;opacity:.15;pointer-events:none}
 .plogo:hover{transform:translateY(-10px) scale(1.06);box-shadow:0 26px 44px rgba(40,0,0,.5)}
-.plogo img{position:relative;width:100%;height:100%;object-fit:contain}
+.plogo img{position:absolute;inset:clamp(14px,1.8vw,22px);width:calc(100% - 2 * clamp(14px,1.8vw,22px));height:calc(100% - 2 * clamp(14px,1.8vw,22px));object-fit:contain}
 .cnav{display:flex;justify-content:center;gap:12px;margin-top:8px}
 .cnav button{width:48px;height:48px;border-radius:50%;border:2px solid #fff;background:transparent;color:#fff;font:800 20px Montserrat;cursor:pointer;transition:background .2s,color .2s}
 .cnav button:hover{background:#fff;color:var(--red2)}
@@ -214,7 +214,6 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:4
 
 <header class="hero" id="top">
   <div class="backdrop" aria-hidden="true"></div>
-  <img class="hero-logo" src="logo.png" alt="Balmoral Group Promotions logo" width="181" height="158">
   <div class="smoke s1" aria-hidden="true"></div><div class="smoke s2" aria-hidden="true"></div>
   <div class="stage" aria-hidden="true">
     <img class="fighter fl" src="fighter-left.webp" alt="" width="740" height="1111">
@@ -304,30 +303,18 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:4
     <p class="lede up" style="color:#ffe2dd;margin-inline:auto">The brands and institutions in our corner for Chaos in the Ring.</p>
     <div class="carousel" id="carousel" tabindex="0" aria-label="Partner logos, scrolling">
     <ul class="plogos" id="plogos">
-      <li class="plogo"><img src="partners/fgm.webp" alt="Fight Group Media (FGM)" loading="lazy"></li>
-      <li class="plogo"><img src="partners/lagos-tourism.webp" alt="Lagos State Tourism" loading="lazy"></li>
-      <li class="plogo"><img src="partners/pepsi.webp" alt="Pepsi" loading="lazy"></li>
-      <li class="plogo"><img src="partners/supa-komando.webp" alt="Supa Komando Energy Drink" loading="lazy"></li>
-      <li class="plogo"><img src="partners/medics-partners.webp" alt="Medics Partners" loading="lazy"></li>
-      <li class="plogo"><img src="partners/boxing-emblem.webp" alt="Boxing federation emblem" loading="lazy"></li>
-      <li class="plogo"><img src="partners/ibo.webp" alt="IBO" loading="lazy"></li>
-      <li class="plogo"><img src="partners/lagos-multicolor.webp" alt="Lagos State emblem" loading="lazy"></li>
-      <li class="plogo"><img src="partners/lagos-green.webp" alt="Lagos State agency emblem" loading="lazy"></li>
-      <li class="plogo"><img src="partners/lagos-blue.webp" alt="Lagos State Government seal" loading="lazy"></li>
-      <li class="plogo"><img src="partners/orange-emblem.webp" alt="Partner emblem" loading="lazy"></li>
-      <li class="plogo"><img src="partners/gold-emblem.webp" alt="Partner emblem" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/fgm.webp" alt="Fight Group Media (FGM)" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/lagos-tourism.webp" alt="Lagos State Tourism" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/pepsi.webp" alt="Pepsi" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/supa-komando.webp" alt="Supa Komando Energy Drink" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/medics-partners.webp" alt="Medics Partners" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/boxing-emblem.webp" alt="Boxing federation emblem" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/ibo.webp" alt="IBO" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/lagos-multicolor.webp" alt="Lagos State emblem" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/lagos-green.webp" alt="Lagos State agency emblem" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/lagos-blue.webp" alt="Lagos State Government seal" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/orange-emblem.webp" alt="Partner emblem" loading="lazy"></li>
-      <li class="plogo" aria-hidden="true"><img src="partners/gold-emblem.webp" alt="Partner emblem" loading="lazy"></li>
+      <li class="plogo"><img src="partners/pepsi.svg" alt="Pepsi" loading="lazy"></li>
+      <li class="plogo"><img src="partners/ibo-official.webp" alt="International Boxing Organization (IBO)" loading="lazy"></li>
+      <li class="plogo"><img src="partners/lagos-state.webp" alt="Lagos State Government" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/pepsi.svg" alt="Pepsi" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/ibo-official.webp" alt="International Boxing Organization (IBO)" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/lagos-state.webp" alt="Lagos State Government" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/pepsi.svg" alt="Pepsi" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/ibo-official.webp" alt="International Boxing Organization (IBO)" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/lagos-state.webp" alt="Lagos State Government" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/pepsi.svg" alt="Pepsi" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/ibo-official.webp" alt="International Boxing Organization (IBO)" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/lagos-state.webp" alt="Lagos State Government" loading="lazy"></li>
     </ul>
     </div>
     <div class="cnav"><button type="button" id="cprev" aria-label="Previous partners">←</button><button type="button" id="cnext" aria-label="Next partners">→</button></div>
@@ -490,7 +477,6 @@ if(window.gsap&&!reduced){
     .from('.fr',{xPercent:60,opacity:0,duration:1.1,ease:'power4.out'},'<')
     .from('.rope.a',{xPercent:-100,duration:.9,ease:'power4.out'},'-=.9')
     .from('.rope.b',{xPercent:100,duration:.9,ease:'power4.out'},'<.1')
-    .from('.hero-logo',{y:-30,opacity:0,duration:.6},'-=.6')
     .from('.titleblock h1 img',{scale:2.6,opacity:0,duration:.42,ease:'power4.in'},'-=.3')
     .to('.flash',{opacity:.55,duration:.06,yoyo:true,repeat:1})
     .fromTo('.titleblock',{x:-10,y:6},{x:0,y:0,duration:.5,ease:'elastic.out(1.2,.25)'},'<')
