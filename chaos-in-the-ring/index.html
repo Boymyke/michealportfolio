@@ -14,7 +14,7 @@
    IDEA: the boxing ring — red ropes slash across every band, fighters collide in the middle, chrome lettering.
    PICTURE: the poster face-off on a blurred full-bleed copy of itself, 3D chrome title slammed on top, sparks rising.
    COLOUR and TYPE: poster red #d10202 / #8a0303, blood-dark #160101, hammered-metal headings; Montserrat 600–900.
-   LAYOUT: centred poster hero, ticker, countdown, tale of the tape, card, fight week, tickets, partners, share, info. */
+   LAYOUT: centred poster hero, countdown, tale of the tape, card, fight week, tickets, partners, share, info. */
 :root{color-scheme:dark;--red:#d10202;--red2:#8a0303;--deep:#140101;--deep2:#210303;--ink:#fff5f3;--mute:#e7b9b2;--line:rgba(255,220,214,.16)}
 *{box-sizing:border-box;min-width:0}
 html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:72px}
@@ -72,21 +72,28 @@ nav .btn{min-height:44px;padding:0 18px;font-size:13px}
 @media(max-width:860px){.links{display:none}}
 @media(max-width:480px){.brand span{display:none}}
 /* ---------- HERO ---------- */
-.hero{--sw:min(calc(100vw - 32px),1000px,74svh);position:relative;min-height:min(100svh,1100px);padding:84px 16px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;background:#8a0202}
-.backdrop{position:absolute;inset:-8%;z-index:-3;background:url(poster.jpg) center 28%/cover;filter:blur(60px) saturate(1.3) brightness(.55);opacity:.5;transform:scale(1.15)}
-.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(55% 60% at 50% 40%,rgba(255,30,15,.6),transparent 72%),radial-gradient(120% 90% at 50% 45%,transparent 40%,rgba(14,0,0,.94) 100%)}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:url(grunge.png) 0 0/420px;mix-blend-mode:multiply;opacity:.6}
-.hero-logo{position:relative;z-index:5;width:clamp(64px,7vw,92px);margin:0 auto 6px;filter:drop-shadow(0 4px 14px rgba(40,0,0,.6))}
-.stage{position:relative;width:var(--sw);aspect-ratio:941/795}
-.half{position:absolute;top:0;width:50.05%;height:100%;object-fit:cover;-webkit-mask-composite:source-in;mask-composite:intersect}
-.half.l{left:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%),linear-gradient(180deg,transparent 0,#000 14%,#000 66%,transparent 97%);mask-image:linear-gradient(90deg,transparent 0,#000 30%),linear-gradient(180deg,transparent 0,#000 14%,#000 66%,transparent 97%)}
-.half.r{right:0;-webkit-mask-image:linear-gradient(270deg,transparent 0,#000 30%),linear-gradient(180deg,transparent 0,#000 14%,#000 66%,transparent 97%);mask-image:linear-gradient(270deg,transparent 0,#000 30%),linear-gradient(180deg,transparent 0,#000 14%,#000 66%,transparent 97%)}
-.rope{position:absolute;left:-20vw;width:140vw;height:clamp(14px,2vw,28px);border-radius:99px;z-index:3;pointer-events:none;
- background:linear-gradient(180deg,#ff5a4a 0%,#d40808 30%,#7a0000 75%,#3a0000 100%);filter:blur(3px);box-shadow:0 18px 30px rgba(40,0,0,.55)}
-.rope.a{top:12%;rotate:-13deg}.rope.b{top:63%;rotate:-13deg;filter:blur(5px)}
+.hero{--sw:min(calc(100vw - 32px),1100px,calc((100svh - 320px) * 1.15));position:relative;min-height:min(100svh,1100px);padding:84px 16px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;background:#7a0101}
+.backdrop{position:absolute;inset:-6%;z-index:-4;background:url(hero-bg.jpg) center/cover}
+.hero::before{content:"";position:absolute;inset:0;z-index:-3;background:
+ conic-gradient(from 168deg at 30% -8%,transparent 0deg,rgba(255,190,170,.16) 6deg,transparent 14deg),
+ conic-gradient(from 178deg at 70% -8%,transparent 0deg,rgba(255,190,170,.14) 7deg,transparent 15deg),
+ radial-gradient(50% 45% at 50% 42%,rgba(255,40,20,.35),transparent 70%),
+ radial-gradient(130% 95% at 50% 45%,transparent 45%,rgba(12,0,0,.9) 100%);animation:beams 9s ease-in-out infinite alternate}
+@keyframes beams{to{filter:brightness(1.15);transform:translateX(1.5%)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-2;background:url(grunge.png) 0 0/420px,radial-gradient(rgba(0,0,0,.3) 1.1px,transparent 1.6px) 0 0/8px 8px;mix-blend-mode:multiply;opacity:.65;-webkit-mask-image:linear-gradient(180deg,#000,rgba(0,0,0,.4) 50%,#000);mask-image:linear-gradient(180deg,#000,rgba(0,0,0,.4) 50%,#000)}
+.smoke{position:absolute;z-index:-1;width:60vw;height:40vw;border-radius:50%;background:radial-gradient(closest-side,rgba(255,200,190,.12),transparent);filter:blur(30px);pointer-events:none;animation:smoke 22s ease-in-out infinite alternate}
+.smoke.s1{left:-15vw;bottom:-10vw}.smoke.s2{right:-20vw;top:10vh;animation-duration:28s;animation-direction:alternate-reverse}
+@keyframes smoke{to{transform:translate(12vw,-4vw) scale(1.2)}}
+.hero-logo{position:relative;z-index:5;width:clamp(64px,7vw,92px);margin:0 auto 4px;filter:drop-shadow(0 4px 14px rgba(40,0,0,.6))}
+.stage{position:relative;z-index:2;width:var(--sw);aspect-ratio:1468/1071;-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 99%);mask-image:linear-gradient(180deg,#000 72%,transparent 99%)}
+.fighter{position:absolute;top:0;height:100%;width:auto;max-width:none;filter:drop-shadow(0 0 28px rgba(255,30,10,.35)) drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+.fl{left:0;width:50.4%}.fr{right:0;width:49.6%}
+.rope{position:absolute;left:-20vw;width:140vw;height:clamp(14px,2vw,28px);border-radius:99px;pointer-events:none;
+ background:linear-gradient(180deg,#ff5a4a 0%,#d40808 30%,#7a0000 75%,#3a0000 100%);filter:blur(2.5px);box-shadow:0 18px 30px rgba(40,0,0,.55)}
+.rope.a{top:26%;rotate:-11deg;z-index:1;filter:blur(4px);opacity:.85}.rope.b{top:60%;rotate:-11deg;z-index:3;filter:blur(3px)}
 #sparks{position:absolute;inset:0;z-index:4;pointer-events:none;width:100%;height:100%}
 .flash{position:absolute;inset:0;z-index:6;background:#fff;opacity:0;pointer-events:none}
-.titleblock{position:relative;z-index:5;margin-top:calc(var(--sw) * -.34);width:min(100%,calc(var(--sw) * 1.02));text-align:center}
+.titleblock{position:relative;z-index:5;margin-top:calc(var(--sw) * -.27);width:min(100%,calc(var(--sw) * .98));text-align:center}
 .titleblock h1{margin:0}
 .titleblock h1 img{width:100%;filter:drop-shadow(0 18px 26px rgba(30,0,0,.75))}
 .tag{font:900 clamp(18px,2.6vw,32px)/1.15 Montserrat;text-transform:uppercase;letter-spacing:.06em;margin:0;text-shadow:0 4px 18px rgba(60,0,0,.7)}
@@ -97,13 +104,6 @@ nav .btn{min-height:44px;padding:0 18px;font-size:13px}
 .scrollcue::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:4px;background:#fff;animation:cue 1.6s infinite}
 @keyframes cue{to{transform:translateY(12px);opacity:0}}
 @media(max-width:700px){.hero.hero{min-height:0;padding-bottom:64px}.scrollcue{display:none}}
-/* ---------- TICKER ---------- */
-.tickwrap{position:relative;z-index:4;overflow:hidden;padding:18px 0;margin:-28px 0 -18px}
-.ticker{position:relative;z-index:4;background:#0c0000;border-block:2px solid var(--red);overflow:hidden;padding:14px 0;rotate:-1.2deg;margin:-10px -2vw 0;box-shadow:0 14px 30px rgba(0,0,0,.5)}
-.track{display:flex;width:max-content;animation:marq 26s linear infinite}
-.track span{font:italic 900 clamp(22px,3vw,38px)/1 Montserrat;text-transform:uppercase;padding-right:.9em;white-space:nowrap;background:url(metal.jpg) center/cover;-webkit-background-clip:text;background-clip:text;color:transparent}
-.track span:nth-child(even){-webkit-text-stroke:1.5px rgba(255,90,70,.9);background:none;color:transparent}
-@keyframes marq{to{transform:translateX(-50%)}}
 /* ---------- COUNTDOWN ---------- */
 .count{position:relative;background:#f6efed;color:var(--deep);padding:30px max(5vw,16px) 26px;isolation:isolate;overflow:hidden}
 .count::before{content:"";position:absolute;inset:0;z-index:-1;background:url(grunge.png) 0 0/420px;opacity:.35}
@@ -174,15 +174,18 @@ nav .btn{min-height:44px;padding:0 18px;font-size:13px}
 /* ---------- PARTNERS / SHARE / FAQ ---------- */
 .partners{text-align:center;background:linear-gradient(180deg,#a30202,#c90303)}
 .partners h2{font-size:clamp(26px,3vw,36px)}
-.plogos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(10px,1.6vw,18px)}
-.plogo{position:relative;aspect-ratio:1;display:grid;place-items:center;padding:clamp(12px,1.8vw,22px);background:#fbf7f6;border-radius:8px;box-shadow:0 14px 30px rgba(60,0,0,.35),inset 0 -4px 0 rgba(0,0,0,.06);overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
-.plogo::before{content:"";position:absolute;inset:0;background:url(grunge.png) 0 0/300px;opacity:.18;pointer-events:none}
-.plogo::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.8) 50%,transparent 60%);transform:translateX(-120%);transition:transform .7s;pointer-events:none}
-.plogo:hover{transform:translateY(-8px) rotate(-1.5deg);box-shadow:0 24px 44px rgba(40,0,0,.5)}
-.plogo:hover::after{transform:translateX(120%)}
+.carousel{position:relative;margin:10px calc(50% - 50vw) 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.plogos{list-style:none;margin:0;padding:18px 0 26px;display:flex;gap:clamp(14px,2vw,24px);width:max-content;animation:belt 40s linear infinite}
+.carousel:hover .plogos,.carousel:focus-within .plogos{animation-play-state:paused}
+@keyframes belt{to{transform:translateX(calc(-50% - clamp(14px,2vw,24px) / 2))}}
+.plogo{position:relative;flex:none;width:clamp(130px,14vw,190px);aspect-ratio:1;display:grid;place-items:center;padding:clamp(14px,1.8vw,24px);background:#fbf7f6;border-radius:10px;box-shadow:0 14px 30px rgba(60,0,0,.35),inset 0 -4px 0 rgba(0,0,0,.06);overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.plogo::before{content:"";position:absolute;inset:0;background:url(grunge.png) 0 0/300px;opacity:.15;pointer-events:none}
+.plogo:hover{transform:translateY(-10px) scale(1.06);box-shadow:0 26px 44px rgba(40,0,0,.5)}
 .plogo img{position:relative;width:100%;height:100%;object-fit:contain}
-@media(max-width:900px){.plogos{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:520px){.plogos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cnav{display:flex;justify-content:center;gap:12px;margin-top:8px}
+.cnav button{width:48px;height:48px;border-radius:50%;border:2px solid #fff;background:transparent;color:#fff;font:800 20px Montserrat;cursor:pointer;transition:background .2s,color .2s}
+.cnav button:hover{background:#fff;color:var(--red2)}
+.reduced .carousel{overflow-x:auto;scroll-snap-type:x mandatory}.reduced .plogos{animation:none}.reduced .plogo{scroll-snap-align:start}
 .share{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center}
 .share .poster{border-radius:6px;box-shadow:0 40px 80px rgba(0,0,0,.65),0 0 0 6px rgba(255,255,255,.06);rotate:-4deg}
 .hash{font:italic 900 clamp(32px,6vw,68px)/1 Montserrat;margin:6px 0 18px;word-break:break-word;background:url(metal.jpg) center/cover;-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -212,9 +215,10 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:4
 <header class="hero" id="top">
   <div class="backdrop" aria-hidden="true"></div>
   <img class="hero-logo" src="logo.png" alt="Balmoral Group Promotions logo" width="181" height="158">
+  <div class="smoke s1" aria-hidden="true"></div><div class="smoke s2" aria-hidden="true"></div>
   <div class="stage" aria-hidden="true">
-    <img class="half l" src="left.jpg" alt="">
-    <img class="half r" src="right.jpg" alt="">
+    <img class="fighter fl" src="fighter-l.webp" alt="" width="740" height="1071">
+    <img class="fighter fr" src="fighter-r.webp" alt="" width="728" height="1071">
   </div>
   <div class="rope a" aria-hidden="true"></div>
   <div class="rope b" aria-hidden="true"></div>
@@ -228,7 +232,6 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:4
   <div class="flash" aria-hidden="true"></div>
 </header>
 
-<div class="tickwrap" aria-hidden="true"><div class="ticker"><div class="track" id="track"></div></div></div>
 
 <section class="count" aria-label="Countdown to fight night">
   <div class="wrap">
@@ -299,7 +302,8 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:4
   <div class="wrap">
     <h2 id="ph" class="rv">Our partners</h2>
     <p class="lede up" style="color:#ffe2dd;margin-inline:auto">The brands and institutions in our corner for Chaos in the Ring.</p>
-    <ul class="plogos">
+    <div class="carousel" id="carousel" tabindex="0" aria-label="Partner logos, scrolling">
+    <ul class="plogos" id="plogos">
       <li class="plogo"><img src="partners/fgm.webp" alt="Fight Group Media (FGM)" loading="lazy"></li>
       <li class="plogo"><img src="partners/lagos-tourism.webp" alt="Lagos State Tourism" loading="lazy"></li>
       <li class="plogo"><img src="partners/pepsi.webp" alt="Pepsi" loading="lazy"></li>
@@ -312,7 +316,21 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:4
       <li class="plogo"><img src="partners/lagos-blue.webp" alt="Lagos State Government seal" loading="lazy"></li>
       <li class="plogo"><img src="partners/orange-emblem.webp" alt="Partner emblem" loading="lazy"></li>
       <li class="plogo"><img src="partners/gold-emblem.webp" alt="Partner emblem" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/fgm.webp" alt="Fight Group Media (FGM)" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/lagos-tourism.webp" alt="Lagos State Tourism" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/pepsi.webp" alt="Pepsi" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/supa-komando.webp" alt="Supa Komando Energy Drink" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/medics-partners.webp" alt="Medics Partners" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/boxing-emblem.webp" alt="Boxing federation emblem" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/ibo.webp" alt="IBO" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/lagos-multicolor.webp" alt="Lagos State emblem" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/lagos-green.webp" alt="Lagos State agency emblem" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/lagos-blue.webp" alt="Lagos State Government seal" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/orange-emblem.webp" alt="Partner emblem" loading="lazy"></li>
+      <li class="plogo" aria-hidden="true"><img src="partners/gold-emblem.webp" alt="Partner emblem" loading="lazy"></li>
     </ul>
+    </div>
+    <div class="cnav"><button type="button" id="cprev" aria-label="Previous partners">←</button><button type="button" id="cnext" aria-label="Next partners">→</button></div>
   </div>
 </section>
 
@@ -399,8 +417,6 @@ $('tapeRows').innerHTML=rows.map(([k,l])=>`<tr><td>${esc(f1[k])}</td><td>${l}</t
 $('bouts').innerHTML=CONFIG.bouts.map(b=>`<li class="${b.main?'main':''}"><span class="lbl">${esc(b.lbl)}</span><span class="names">${esc(b.a)}<em>vs</em>${esc(b.b)}</span><span class="div">${esc(b.div)}</span></li>`).join('');
 $('sched').innerHTML=CONFIG.week.map(w=>`<article><time>${esc(w.time)}</time><div class="day">${esc(w.day)}</div><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></article>`).join('');
 $('faqList').innerHTML=CONFIG.faq.map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('');
-const words=['Chaos in the Ring','Where glory meets chaos','Balmoral Group Promotions','Fight night Lagos'];
-$('track').innerHTML=[...words,...words,...words,...words].map(w=>`<span>${esc(w)} ✦</span>`).join('');
 
 /* tickets */
 const qty={};CONFIG.tiers.forEach(t=>qty[t.id]=0);
@@ -429,6 +445,11 @@ tick();const timer=setInterval(tick,1000);
 
 /* copy hashtag */
 $('copyHash').addEventListener('click',async()=>{try{await navigator.clipboard.writeText('#ChaosInTheRing');$('copyMsg').textContent='Copied — now go post it.';}catch(e){$('copyMsg').textContent='Copy blocked here — select the hashtag above instead.';}});
+
+/* partner carousel buttons: jump the belt one logo */
+{const ul=$('plogos');let off=0;const step=dir=>{const anims=ul.getAnimations();const a=anims[0];if(a&&a.effect){const dur=a.effect.getTiming().duration;const card=ul.children[0].getBoundingClientRect().width+20;const half=ul.scrollWidth/2;a.currentTime=((a.currentTime+dir*dur*card/half)%dur+dur)%dur}else{$('carousel').scrollBy({left:dir*200,behavior:'smooth'})}};
+$('cprev').addEventListener('click',()=>step(-1));$('cnext').addEventListener('click',()=>step(1));
+$('carousel').addEventListener('keydown',e=>{if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});}
 
 /* nav */
 const nav=$('nav');const onScroll=()=>nav.classList.toggle('solid',scrollY>40);addEventListener('scroll',onScroll,{passive:true});onScroll();
@@ -464,9 +485,9 @@ if(window.gsap&&!reduced){
     .to('.pre i:first-child',{yPercent:-100,duration:.7,ease:'power4.inOut'},'<')
     .to('.pre i:nth-child(2)',{yPercent:100,duration:.7,ease:'power4.inOut'},'<')
     .set(pre,{display:'none'})
-    .from('.backdrop',{scale:1.4,opacity:0,duration:1.4},'-=.7')
-    .from('.half.l',{xPercent:-60,opacity:0,duration:1.1,ease:'power4.out'},'-=1.2')
-    .from('.half.r',{xPercent:60,opacity:0,duration:1.1,ease:'power4.out'},'<')
+    .from('.backdrop',{scale:1.3,opacity:0,duration:1.4},'-=.7')
+    .from('.fl',{xPercent:-60,opacity:0,duration:1.1,ease:'power4.out'},'-=1.2')
+    .from('.fr',{xPercent:60,opacity:0,duration:1.1,ease:'power4.out'},'<')
     .from('.rope.a',{xPercent:-100,duration:.9,ease:'power4.out'},'-=.9')
     .from('.rope.b',{xPercent:100,duration:.9,ease:'power4.out'},'<.1')
     .from('.hero-logo',{y:-30,opacity:0,duration:.6},'-=.6')
@@ -480,13 +501,10 @@ if(window.gsap&&!reduced){
     .from('nav',{opacity:0,duration:.5},'-=.3');
   /* hero scroll parallax */
   const hs={trigger:'.hero',start:'top top',end:'bottom top',scrub:.6};
-  gsap.to('.half.l',{xPercent:-12,scrollTrigger:hs});gsap.to('.half.r',{xPercent:12,scrollTrigger:hs});
+  gsap.to('.fl',{xPercent:-12,scrollTrigger:hs});gsap.to('.fr',{xPercent:12,scrollTrigger:hs});
   gsap.to('.titleblock',{yPercent:30,scale:.92,opacity:.2,scrollTrigger:hs});
   gsap.to('.rope.a',{y:-120,scrollTrigger:hs});gsap.to('.rope.b',{y:-60,scrollTrigger:hs});
   gsap.to('.backdrop',{yPercent:12,scrollTrigger:hs});
-  /* ticker reacts to scroll speed */
-  const marq=gsap.to('#track',{xPercent:-50,duration:30,ease:'none',repeat:-1});$('track').style.animation='none';
-  ScrollTrigger.create({onUpdate:s=>{const v=s.getVelocity()/300;gsap.to(marq,{timeScale:(s.direction<0?-1:1)*Math.max(1,Math.min(6,Math.abs(v))),duration:.3,overwrite:true,onComplete:()=>gsap.to(marq,{timeScale:s.direction<0?-1:1,duration:1})})}});
   /* headings: metal wipe */
   gsap.utils.toArray('.rv').forEach(h=>gsap.fromTo(h,{clipPath:'inset(0 100% 0 0)',x:-30,skewX:-12},{clipPath:'inset(0 0% 0 0)',x:0,skewX:0,duration:.9,ease:'power4.out',scrollTrigger:{trigger:h,start:'top 88%'}}));
   gsap.utils.toArray('.up').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:.8,scrollTrigger:{trigger:el,start:'top 90%'}}));
@@ -507,7 +525,7 @@ if(window.gsap&&!reduced){
   gsap.fromTo('#poster',{y:80,rotate:-10},{y:-40,rotate:3,ease:'none',scrollTrigger:{trigger:'#poster',start:'top bottom',end:'bottom top',scrub:true}});
   /* rope dividers parallax */
   gsap.utils.toArray('.rope-div').forEach(r=>gsap.fromTo(r,{xPercent:-4},{xPercent:4,ease:'none',scrollTrigger:{trigger:r.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
-  gsap.from('.plogo',{y:60,scale:.7,rotate:()=>gsap.utils.random(-12,12),opacity:0,stagger:{each:.06,from:'center'},duration:.7,ease:'back.out(1.8)',scrollTrigger:{trigger:'.plogos',start:'top 88%'}});
+  gsap.from('.carousel',{y:60,opacity:0,duration:.9,scrollTrigger:{trigger:'.carousel',start:'top 90%'}});
   gsap.from('#faqList details',{y:24,opacity:0,stagger:.08,duration:.6,scrollTrigger:{trigger:'#faqList',start:'top 88%'}});
 }else{pre.style.display='none'}
 }
